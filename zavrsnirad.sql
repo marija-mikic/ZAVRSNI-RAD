@@ -1,15 +1,19 @@
-drop database if exists zavrsnirad;
-create database zavrsnirad;
-use zavrsnirad;
+drop database if exists zavrsni;
+create database zavrsni;
+use zavrsni;        
 
 
-create table jelo(
+create table jelo (
     sifra int  primary key not null auto_increment,
+    naziv varchar (50),
     sastav varchar(50) not null,
-
+    slika varchar(100),
+    cijena decimal(18,2),
+    vrsta int
+    
 );
 
-create table kupci(
+create table kupac(
     sifra int primary key not null auto_increment,
     ime varchar (30) not null,
     prezime varchar(30) not null,
@@ -17,23 +21,18 @@ create table kupci(
     vrstaplacanja varchar(30) not null
     
 );
-create table vrste(
+create table vrsta(
     sifra int primary key not null auto_increment,
-    pizze varchar(30),
-    rostilj varchar(30),
-    salata varchar(30),
-    alkoholna(30),
-    bezalkoholna (30),
-    pice int,
-    jelo int
+    naziv varchar (50)
+   
 
-)
-create table narudzbe(
+);
+create table narudzba(
     sifra int primary key not null auto_increment,
     vrstaplacanja varchar(30)not null,
     mjestopreuzimanja varchar(30) not null,
     datum datetime,
-    kupci int
+    kupac int
     
 );
 
@@ -41,7 +40,35 @@ create table narudzbe(
 create table pice(
     sifra int primary key not null auto_increment,
     naziv varchar(30) not null,
+    slika varchar(100),
+    cijena decimal(18,2),
+    vrsta int
    );
+
+
+create table narudzba_jelo(
+    sifra int primary key not null auto_increment,
+    jelo int,
+    narudzba int
+
+);
+
+create table narudzba_pice (
+    sifra int primary key not null auto_increment,
+    pice int,
+    narudzba int
+);
+
+alter table jelo add foreign key (vrsta) references vrsta(sifra);
+alter table narudzba add foreign key (kupac)references kupac (sifra);
+alter table pice add foreign key (vrsta) references vrsta(sifra);
+alter table narudzba_jelo add foreign key(jelo) references jelo(sifra);
+alter table narudzba_pice add foreign key(pice) references pice(sifra);
+alter table narudzba_jelo add foreign key(narudzba) references narudzba(sifra);
+alter table narudzba_pice add foreign key(narudzba) references narudzba(sifra);
+
+
+
 
 
 
