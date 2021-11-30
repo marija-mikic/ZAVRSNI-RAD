@@ -72,7 +72,40 @@ alter table narudzba_jelo add foreign key(narudzba) references narudzba(sifra);
 alter table narudzba_pice add foreign key(narudzba) references narudzba(sifra);
 
 
+insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta)values
+(null,'Bianco capri','sir, gljive, šunka, vrhnje',null,'30',1),
+(null,'Bianco','vrhnje, sir, špek, feferoni',null,'30',1),
+(null,'Peperone	rajčica',' sir, šunka, gljive, češnjak,feferoni',null,'30',1),
+(null,'Pigalo bianco', 'vrhnje, sir, suhi vrat, svježa paprika',null,'31',1),
+(null,'Pileća','rajčica, sir, gljive, piletina',null,'31',1),
+(null,'Dalmatina',' rajčica, sir, pršut, masline, gljive',null,'31',1 ),
+(null,'Pršuto','sir, rajčica, pršut, masline, gljive, slanina',null,'32',1),
+(null,'Đakovačka','sir, rajčica, kulen, slanina, luk, ajvar',null,'31',1 ),
+(null,'Strossmayerova','sir, rajčica, kulen, šunka, gorgonzola, vrhnje',null,'32',1),
+(null,'Ljutica','sir, rajčica, kulen, čili, ljuti feferoni, ajvar',null,'30',1);
 
+insert into vrsta(sifra,naziv)values 
+(null,'pizze'),
+(null,'roštilj'),
+(null,'plate'),
+(null,'pohanahrana'),
+(null,'morskahrana'),
+(null,'salata');
+
+insert into vrsta(sifra,naziv)values
+(null,'pivo'),
+(null,'vino'),
+(null,'jakaalkoholnapica'),
+(null,'bezalkoholnapića'),
+(null,'toplinapici');
+
+insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta)values
+(null,'Ćevapi u somunu ','lepinja, luk, ajvar',null,'30',2),
+(null,' Ćevapi i pommes frites ','lepinja, luk, pommes frites, ajvar',null,'30',2),
+(null,' Ražnjići ',' lepinja, luk, ajvar, pommes frites',null,'30',2),
+(null,' Punjena pljeskavica ', 'sir, lepinja, luk, ajvar, pommes frites',null,'31',2),
+(null,' Pljeskavica ','lepinja, luk, ajvar, pommes frites',null,'31',2),
+(null,'Miješano meso ',' lepinja, carsko, kotlet',null,'31',2 );
 
 
 
