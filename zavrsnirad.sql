@@ -41,7 +41,7 @@ create table pice(
     sifra int primary key not null auto_increment,
     naziv varchar(30) not null,
     slika varchar(100),
-    cijena decimal(18,2),
+    cijena decimal(18,2)not null,
     vrsta int
    );
 
@@ -49,14 +49,18 @@ create table pice(
 create table narudzba_jelo(
     sifra int primary key not null auto_increment,
     jelo int,
-    narudzba int
+    narudzba int,
+    cijena decimal(18,2) not null,
+    kolicina int not null,
 
 );
 
 create table narudzba_pice (
     sifra int primary key not null auto_increment,
     pice int,
-    narudzba int
+    narudzba int,
+    cijena decimal(18,2)not null,
+    kolicina int not null
 );
 
 alter table jelo add foreign key (vrsta) references vrsta(sifra);
