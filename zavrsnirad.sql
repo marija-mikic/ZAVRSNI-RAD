@@ -7,7 +7,7 @@ create table jelo (
     sifra int  primary key not null auto_increment,
     naziv varchar (50),
     sastav varchar(50) not null,
-    slika varchar(100),
+    slika varchar(100) not null,
     cijena decimal(18,2),
     vrsta int
     
@@ -40,7 +40,7 @@ create table narudzba(
 create table pice(
     sifra int primary key not null auto_increment,
     naziv varchar(30) not null,
-    slika varchar(100),
+    slika varchar(100) not null,
     cijena decimal(18,2)not null,
     vrsta int
    );
@@ -51,7 +51,7 @@ create table narudzba_jelo(
     jelo int,
     narudzba int,
     cijena decimal(18,2) not null,
-    kolicina int not null,
+    kolicina int not null
 
 );
 
@@ -72,26 +72,6 @@ alter table narudzba_jelo add foreign key(narudzba) references narudzba(sifra);
 alter table narudzba_pice add foreign key(narudzba) references narudzba(sifra);
 
 
-insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta)values
-(null,'Bianco capri','sir, gljive, šunka, vrhnje',null,'30',1),
-(null,'Bianco','vrhnje, sir, špek, feferoni',null,'30',1),
-(null,'Peperone	rajčica',' sir, šunka, gljive, češnjak,feferoni',null,'30',1),
-(null,'Pigalo bianco', 'vrhnje, sir, suhi vrat, svježa paprika',null,'31',1),
-(null,'Pileća','rajčica, sir, gljive, piletina',null,'31',1),
-(null,'Dalmatina',' rajčica, sir, pršut, masline, gljive',null,'31',1 ),
-(null,'Pršuto','sir, rajčica, pršut, masline, gljive, slanina',null,'32',1),
-(null,'Đakovačka','sir, rajčica, kulen, slanina, luk, ajvar',null,'31',1 ),
-(null,'Strossmayerova','sir, rajčica, kulen, šunka, gorgonzola, vrhnje',null,'32',1),
-(null,'Ljutica','sir, rajčica, kulen, čili, ljuti feferoni, ajvar',null,'30',1);
-
-insert into vrsta(sifra,naziv)values 
-(null,'pizze'),
-(null,'roštilj'),
-(null,'plate'),
-(null,'pohanahrana'),
-(null,'morskahrana'),
-(null,'salata');
-
 insert into vrsta(sifra,naziv)values
 (null,'pivo'),
 (null,'vino'),
@@ -107,5 +87,39 @@ insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta)values
 (null,' Pljeskavica ','lepinja, luk, ajvar, pommes frites',null,'31',2),
 (null,'Miješano meso ',' lepinja, carsko, kotlet',null,'31',2 );
 
+insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta)values
+(null,'Bianco capri','sir, gljive, šunka, vrhnje',null,'30',1),
+(null,'Bianco','vrhnje, sir, špek, feferoni',null,'30',1),
+(null,'Peperone	rajčica',' sir, šunka, gljive, češnjak,feferoni',null,'30',1),
+(null,'Pigalo bianco', 'vrhnje, sir, suhi vrat, svježa paprika',null,'31',1),
+(null,'Pileća','rajčica, sir, gljive, piletina',null,'31',1),
+(null,'Dalmatina',' rajčica, sir, pršut, masline, gljive',null,'31',1 ),
+(null,'Pršuto','sir, rajčica, pršut, masline, gljive, slanina',null,'32',1),
+(null,'Đakovačka','sir, rajčica, kulen, slanina, luk, ajvar',null,'31',1 ),
+(null,'Strossmayerova','sir, rajčica, kulen, šunka, gorgonzola, vrhnje',null,'32',1),
+(null,'Ljutica','sir, rajčica, kulen, čili, ljuti feferoni, ajvar',null,'30',1);
 
+insert into pice(sifra,naziv,slika,cijena,vrsta)values
+(null,'pann',null,'15',1),
+(null,'grasevina',null,'25',2),
+(null,'cocacola',null,'10',4);
 
+insert into kupac(sifra, ime,prezime,adresa,vrstaplacanja)values
+(null,'Marija','Mikic','B.Adzije 26','gotovina'),
+(null,'Ana','Jurić','B.Jelacica 30','gotovina'),
+(null,'Bruno','Klaric','Stepinca 10','gotovina');
+
+insert into narudzba (sifra,vrstaplacanja,mjestopreuzimanja,datum,kupac)values
+(null,'gotovina','dostava','2021-12-05',1),
+(null,'gotovina','preuzimanje','2021-12-05',2),
+(null,'gotovina','dostava','2021-12-05',3);
+
+insert into narudzba_pice (sifra,pice,narudzba,cijena,kolicina)values
+(null,1,1,'20','2'),
+(null,1,1,'20','2'),
+(null,1,1,'20','2');
+
+insert into narudzba_jelo (sifra,jelo,narudzba,kolicina,cijena)values
+(null,1,2,'2',20),
+(null,1,3,'2',20),
+(null,1,2,'2',20);
