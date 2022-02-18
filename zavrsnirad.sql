@@ -2,8 +2,8 @@ drop database if exists zavrsni;
 create database zavrsni;
 use zavrsni;        
 
-create table operater(
-    sifra in not null primary key auto_increment,
+create table operater (
+    sifra int not null primary key auto_increment,
     email varchar(50) not null,
     lozinka char (60) not null,
     ime varchar (50) not null,
@@ -77,6 +77,12 @@ alter table narudzba_jelo add foreign key(jelo) references jelo(sifra);
 alter table narudzba_pice add foreign key(pice) references pice(sifra);
 alter table narudzba_jelo add foreign key(narudzba) references narudzba(sifra);
 alter table narudzba_pice add foreign key(narudzba) references narudzba(sifra);
+
+insert into operater(email,lozinka,ime,prezime, uloga) values
+# lozinka a
+('admin@edunova.hr','$2a$12$gcFbIND0389tUVhTMGkZYem.9rsMa733t9J9e9bZcVvZiG3PEvSla','Administrator','Edunova','admin'),
+# lozinka o
+('oper@edunova.hr','$2a$12$S6vnHiwtRDdoUW4zgxApvezBlodWj/tmTADdmKxrX28Y2FXHcoHOm','Operater','Edunova','oper');
 
 
 insert into vrsta(sifra,naziv)values
