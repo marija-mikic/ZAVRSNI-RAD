@@ -2,7 +2,14 @@ drop database if exists zavrsni;
 create database zavrsni;
 use zavrsni;        
 
-
+create table operater(
+    sifra in not null primary key auto_increment,
+    email varchar(50) not null,
+    lozinka char (60) not null,
+    ime varchar (50) not null,
+    prezime varchar (50) not null,
+    uloga varchar (10) not null
+);
 create table jelo (
     sifra int  primary key not null auto_increment,
     naziv varchar (50),
