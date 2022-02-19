@@ -1,0 +1,17 @@
+<?php if(App::config('dev')):?>
+<h1>Tražili ste <?$onoceganema?></h1>
+<ul>
+    <li>
+        Mozda je potrebno kreirati kontroler klasu pa  nju metodu
+    </li>
+    <li>
+        možda je krivi naziv kontroler klase ili metode
+    </li>
+    <li>
+        možda je kriva ruta generalno
+    </li>
+</ul>
+<?php else:?>
+    <h1> ono što ste tražili ne postoji </h1>
+    <a href ="<?= App::config('url')?>">Pocetna stranica </a>
+    <?php endif;?>
