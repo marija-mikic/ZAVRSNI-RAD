@@ -1,0 +1,34 @@
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title"><?=App::config('naslovApp')?></div>
+</div>
+
+<div class="top-bar" id="example-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><?=App::config('naslovApp')?></li>
+      <li><a href="<?=App::config('url')?>">Početna</a></li>
+      <li class="has-submenu">
+        <a href="<?=App::config('url')?>">KONTAKT</a>
+        </li>
+      
+      <li><a href="<?=App::config('url')?>">O NAMA</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a href="<?=App::config('url')?>login/index">Login</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li>
+        <?php if(App::autoriziran()):?>
+          <a href="<?=App::config('url')?>login/odjava">Odjavi <?php echo $_SESSION['autoriziran']->ime ?></a>
+        <?php else:?>
+          <a href="<?=App::config('url')?>login/index">Login</a>
+        <?php endif;?>
+      </li>
+    </ul>
+  </div>
+</div>
