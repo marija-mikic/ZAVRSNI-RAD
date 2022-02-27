@@ -2,7 +2,7 @@
 
 return [
     'dev'=> true,
-    'url'=>'http//edunovaapp.xyz/',
+    'url'=>'http://157.230.115.5/',
     'naslovApp'=>'PIZZERIA',
     'baza'=>[
         'server'=>'localhost',
