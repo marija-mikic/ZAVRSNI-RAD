@@ -1,79 +1,53 @@
-<div class="grid-x grid-padding-x" style="text-align: center">
-<div class="large-4 cell">
-<div class="product-card">
-  <div class="product-card-thumbnail">
-    <h2 class="product-card-title">Pizza</h2>
-  <span class="product-card-desc">Product Description</span></br>
-  <span class="product-card-price">20 KN</span>
-  <div class="product-card-colors">
-    <a class="button" href="#">U KOŠARICU</a>    
-  </div>
-</div>
-</div>
-</div>
+<?php
 
-<div class="large-4 cell">
-<div class="product-card">
-  <div class="product-card-thumbnail">
-    <h2 class="product-card-title">Pizza</h2>
-  <span class="product-card-desc">Product Description</span></br>
-  <span class="product-card-price">20 KN</span>
-  <div class="product-card-colors">
-    <a class="button" href="#">U KOŠARICU</a>    
-  </div>
-</div>
-</div>
-</div>
 
-<div class="large-4 cell">
-<div class="product-card">
-  <div class="product-card-thumbnail">
-    <h2 class="product-card-title">Pizza</h2>
-  <span class="product-card-desc">Product Description</span></br>
-  <span class="product-card-price">20 KN</span>
-  <div class="product-card-colors">
-    <a class="button" href="#">U KOŠARICU</a>    
-  </div>
-</div>
-</div>
-</div>
+// Čitati https://medium.com/@noufel.gouirhate/create-your-own-mvc-framework-in-php-af7bd1f0ca19
 
-<div class="large-4 cell">
-<div class="product-card">
-  <div class="product-card-thumbnail">
-    <h2 class="product-card-title">Pizza</h2>
-  <span class="product-card-desc">Product Description</span></br>
-  <span class="product-card-price">20 KN</span>
-  <div class="product-card-colors">
-    <a class="button" href="#">U KOŠARICU</a>    
-  </div>
-</div>
-</div>
-</div>
+// pokaži mi sve greške i upozorenja
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(E_ALL);
 
-<div class="large-4 cell">
-<div class="product-card">
-  <div class="product-card-thumbnail">
-    <h2 class="product-card-title">Pizza</h2>
-  <span class="product-card-desc">Product Description</span></br>
-  <span class="product-card-price">20 KN</span>
-  <div class="product-card-colors">
-    <a class="button" href="#">U KOŠARICU</a>    
-  </div>
-</div>
-</div>
-</div>
-<div class="large-4 cell">
-<div class="product-card">
-  <div class="product-card-thumbnail">
-    <h2 class="product-card-title">Pizza</h2>
-  <span class="product-card-desc">Product Description</span></br>
-  <span class="product-card-price">20 KN</span>
-  <div class="product-card-colors">
-    <a class="button" href="#">U KOŠARICU</a>    
-  </div>
-</div>
-</div>
-</div>
+session_start();
+
+// BP Base Path
+define('BP', __DIR__ . DIRECTORY_SEPARATOR);
+define('BP_APP', __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR);
+
+//test
+//echo BP;
+
+// na kojim putanjama želim učitavati PHP klase
+$putanje = implode(
+    PATH_SEPARATOR,
+    [
+        BP_APP . 'model',
+        BP_APP . 'controller',
+        BP_APP . 'core'
+    ]
+);
+
+// test 
+// echo $putanje;
+
+set_include_path($putanje);
+
+spl_autoload_register(function($klasa){
+    $putanje = explode(PATH_SEPARATOR,get_include_path());
+    foreach($putanje as $p){
+        $datoteka = $p . DIRECTORY_SEPARATOR . $klasa . '.php';
+        if(file_exists($datoteka)){
+            include_once $datoteka;
+            break;
+        }
+    }
+    //echo $klasa;
+    //echo '<pre>';
+    //print_r($putanje); 
+    //echo '</pre>';
+});
+
+//print_r ($_SERVER);
+App::start();
 
 
