@@ -1,13 +1,28 @@
 <?php
 
-return [
-    'dev'=> true,
-    'url'=>'http://157.230.115.5/',
-    'naslovApp'=>'PIZZERIA',
-    'baza'=>[
+if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
+    $url='http://edunovaapp.xyz/';
+    $dev=true;
+    $baza=[
         'server'=>'localhost',
-        'baza'=>'zavrsni',
+        'baza'=>'edunovapp24',
         'korisnik'=>'edunova',
         'lozinka'=>'edunova'
-    ]
+    ];
+}else{
+    $url='https://mamik-dj.shop/';
+    $dev=false;
+    $baza=[
+        'server'=>'mamik-dj.shop',
+        'baza'=>'zavrsni',
+        'korisnik'=>'marija',
+        'lozinka'=>'teskipass1155'
+    ];
+}
+
+return [
+    'dev'=>$dev,
+    'url'=>$url,
+    'naslovApp'=>'Edunova APP',
+    'baza'=>$baza
 ];
