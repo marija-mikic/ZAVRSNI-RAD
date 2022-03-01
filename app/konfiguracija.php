@@ -16,7 +16,7 @@ if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
         'server'=>'mamik-dj.shop',
         'baza'=>'zavrsni',
         'korisnik'=>'marija',
-        'lozinka'=>'teskipass1155'
+        'lozinka'=>''
     ];
 }
 
