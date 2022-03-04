@@ -15,9 +15,15 @@
       <li><a href="<?=App::config('url')?>">O NAMA</a></li>
     </ul>
   </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><a href="<?=App::config('url')?>login/index">Login</a></li>
+  <?php if(App::autoriziran()):?>
+        <li><a href="#">UNOS</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="<?=App::config('url')?>jela/index">JELA</a></li>
+            <li><a href="<?=App::config('url')?>pica/index">PIĆA</a></li>
+            
+          </ul>
+        </li>
+      <?php endif;?>
     </ul>
   </div>
   <div class="top-bar-right">
