@@ -3,20 +3,19 @@
   <div class="title-bar-title"><?=App::config('naslovApp')?></div>
 </div>
 
+
 <div class="top-bar" id="example-menu">
   <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
+   
       <li class="menu-text"><?=App::config('naslovApp')?></li>
       <li><a href="<?=App::config('url')?>">Početna</a></li>
       <li class="has-submenu">
         <a href="<?=App::config('url')?>">KONTAKT</a>
-        </li>
-      
+        </li>      
       <li><a href="<?=App::config('url')?>">O NAMA</a></li>
-    </ul>
-  </div>
-  
-  <?php if(App::autoriziran()):?>
+      </div>
+
+      <?php if(App::autoriziran()):?>
         <li><a href="#">UNOS</a>
           <ul class="submenu menu vertical" data-submenu>
             <li><a href="<?=App::config('url')?>jela/index">JELA</a></li>
@@ -26,8 +25,7 @@
         </li>
       <?php endif;?>
     </ul>
-  </div>
-  <div class="top-bar-right">
+    <div class="top-bar-right">
     <ul class="menu">
       <li>
         <?php if(App::autoriziran()):?>
@@ -37,5 +35,7 @@
         <?php endif;?>
       </li>
     </ul>
+    
   </div>
 </div>
+
