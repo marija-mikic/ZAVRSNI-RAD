@@ -1,32 +1,24 @@
-<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-  <button class="menu-icon" type="button" data-toggle></button>
-  <div class="title-bar-title"><?=App::config('naslovApp')?></div>
-</div>
-
-
 <div class="top-bar" id="example-menu">
   <div class="top-bar-left">
-   
+    <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text"><?=App::config('naslovApp')?></li>
       <li><a href="<?=App::config('url')?>">Početna</a></li>
-      <li class="has-submenu">
-        <a href="<?=App::config('url')?>">KONTAKT</a>
-        </li>      
-      <li><a href="<?=App::config('url')?>">O NAMA</a></li>
-      </div>
-
+      <?php if(App::autoriziran()):?>
+        <li><a href="<?=App::config('url')?>nadzornaploca/index">Nadzorna ploča</a></li>
+      <?php endif;?>
+      <li><a href="<?=App::config('url')?>">Početna</a></li>
+      <li><a href="<?=App::config('url')?>">Početna</a></li>
       <?php if(App::autoriziran()):?>
         <li><a href="#">UNOS</a>
           <ul class="submenu menu vertical" data-submenu>
             <li><a href="<?=App::config('url')?>jela/index">JELA</a></li>
             <li><a href="<?=App::config('url')?>pica/index">PIĆA</a></li>
-            
-          </ul>
+                      </ul>
         </li>
       <?php endif;?>
-      </div>
     </ul>
-    <div class="top-bar-right">
+  </div>
+  <div class="top-bar-right">
     <ul class="menu">
       <li>
         <?php if(App::autoriziran()):?>
@@ -36,7 +28,5 @@
         <?php endif;?>
       </li>
     </ul>
-    
   </div>
 </div>
-
