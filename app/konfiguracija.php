@@ -23,6 +23,6 @@ if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
 return [
     'dev'=>$dev,
     'url'=>$url,
-    'naslovApp'=>'Edunova APP',
+    'naslovApp'=>PIZZERIA',
     'baza'=>$baza
 ];
