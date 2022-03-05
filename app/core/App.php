@@ -32,12 +32,24 @@ class App
             $metoda=$djelovi[2];
         }
 
+        $parametar=null;
+        if(!isset($djelovi[3]) || $djelovi[3]===''){
+            $parametar=null;
+        }else{
+            $parametar=$djelovi[3];
+        }
+
         //echo $klasa . '->' . $metoda . '()';
 
         if(class_exists($klasa) && method_exists($klasa,$metoda)){
             // klasa i metoda postoje, instancirati klasu i pozvati metodu
             $instanca = new $klasa();
-            $instanca->$metoda();
+            if($parametar==null){
+                $instanca->$metoda();
+            }else{
+                $instanca->$metoda($parametar);
+            }
+            
         }else{
             // metoda na klasi ne postoji, obavijestiti korisnika
             $view = new View();
@@ -57,7 +69,6 @@ class App
         $config = include BP_APP . 'konfiguracija.php';
         return $config[$kljuc];
     }
-    
     public static function autoriziran()
     {
         if(isset($_SESSION) && isset($_SESSION['autoriziran'])){
