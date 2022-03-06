@@ -36,7 +36,7 @@ create table vrsta(
 
 create table narudzba(
     sifra int primary key not null auto_increment,
-    kolicina int not null,
+    proizvodi varchar(200) not null,
     mjestopreuzimanja varchar(30) not null,
     datum datetime,
     cijena int not null,
