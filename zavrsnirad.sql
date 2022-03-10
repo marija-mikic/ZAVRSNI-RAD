@@ -1,6 +1,8 @@
 drop database if exists zavrsni;
 create database zavrsni;
-use zavrsni;        
+use zavrsni;     
+
+alter database zavrsni character set utf8mb4;
 
 create table operater (
     sifra int not null primary key auto_increment,
