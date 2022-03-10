@@ -10,7 +10,7 @@ class Jelo
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
         
-            select * from jelo;
+            select * from jelo
         
         '); 
         $izraz->execute();
