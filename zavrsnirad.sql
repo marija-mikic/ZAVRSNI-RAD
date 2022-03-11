@@ -41,7 +41,7 @@ create table narudzba(
     proizvodi varchar(200) not null,
     mjestopreuzimanja varchar(30) not null,
     datum datetime,
-    cijena int not null,
+    ukupno int not null,
     kupac int
 );
 
@@ -65,7 +65,7 @@ create table narudzba_pice (
     sifra int primary key not null auto_increment,
     pice int,
     narudzba int,
-    cijena decimal(18,2)not null,
+    cijena decimal(18,2) not null,
     kolicina int not null
 );
 
@@ -115,22 +115,23 @@ insert into pice(sifra,naziv,slika,cijena,vrsta) values
 (null,'grasevina','pice.jpg','25',2),
 (null,'cocacola','pice.jpg','10',4);
 
-insert into kupac(sifra, ime,prezime,adresa,vrstaplacanja) values
-(null,'Marija','Mikic','B.Adzije 26','gotovina'),
-(null,'Ana','Jurić','B.Jelacica 30','gotovina'),
-(null,'Bruno','Klaric','Stepinca 10','gotovina');
+insert into kupac(sifra, ime,prezime,adresa,email,lozinka) values
+(null,'Marija','Mikic','B.Adzije 26',null,null),
+(null,'Ana','Jurić','B.Jelacica 30',null,null),
+(null,'Bruno','Klaric','Stepinca 10',null,null);
 
-insert into narudzba (sifra,vrstaplacanja,mjestopreuzimanja,datum,kupac) values
-(null,'gotovina','dostava','2021-12-05',1),
-(null,'gotovina','preuzimanje','2021-12-05',2),
-(null,'gotovina','dostava','2021-12-05',3);
+insert into narudzba (sifra,proizvodi,mjestopreuzimanja,datum,ukupno,kupac) values
+(null,'pizza','dostava','2021-12-05','100',1),
+(null,'pizza','dostava','2021-12-05','100',2),
+(null,'pizza','dostava','2021-12-05','100',2);
+
 
 insert into narudzba_pice (sifra,pice,narudzba,cijena,kolicina) values
-(null,1,1,'20','2'),
-(null,1,1,'20','2'),
 (null,1,1,'20','2');
+
 
 insert into narudzba_jelo (sifra,jelo,narudzba,kolicina,cijena) values
 (null,1,2,'2',20),
 (null,1,3,'2',20),
 (null,1,2,'2',20);
+
