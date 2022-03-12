@@ -1,1 +1,69 @@
-unos jela
+<style>
+    #program > table > tbody > tr > td:nth-child(3){
+        text-align: right;
+    }
+</style>
+<div class="grid-x">
+    <div class="cell large-6">
+        <h1 style="font-size: 1.5rem;">JELA</h1>
+    </div>
+    <div class="cell large-6" style="text-align: right;">
+        <a href="<?=App::config('url')?>jelo/novi">
+            <i style="color: green;" title="Dodaj novi" 
+                class="fas fa-2x fa-plus-circle"></i>
+        </a>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Sastav</th>
+            <th>Slika</th>
+            <th>Cijena</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($jela as $jelo): ?>
+            <tr>
+                <td><?=$jelo->naziv?></td>
+                <td style="text-align: right;"><?=$jelo->sastav?></td>
+                <td><?=$jelo->slika?></td>
+                <td><?php if($smjer->cijena):?>
+                <i style="color: green"  
+                            class="fas fa-2x fa-certificate"></i>
+                    <?php else:?>
+                        <i style="color: gray"  
+                            class="fas fa-2x fa-certificate"></i>
+                    <?php endif;?>
+                </td>
+                <td>
+                <a href="<?=App::config('url')?>jelo/promjena/<?=$jelo->sifra?>">
+                    <i title="Promjeni &quot;<?=$jelo->naziv?>&quot;" 
+                        class="fas fa-2x fa-edit"></i>
+                </a>   
+                <?php if($smjer->grupa==0): ?>
+                    <a onclick="return confirm('Sigurno obrisati <?=$jelo->naziv?>?');" style="margin-left: 20px;" href="<?=App::config('url')?>smjer/brisanje/<?=$smjer->sifra?>">
+                        <i style="color: red" title="Obriši <?=$jelo->naziv?>" 
+                            class="fas fa-2x fa-trash"></i>
+                    </a>  
+                <?php else:?>
+                    <i style="margin-left: 20px;color: gray" 
+                    title="Ne može se obrisati <?=$jelo->naziv?> jer ima grupe" 
+                            class="fas fa-2x fa-trash"></i>
+                <?php endif;?>
+                 
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+
+<!-- Korištenje liste  
+<ol>  
+    <?php foreach($smjerovi as $smjer): ?>
+        <li><?=$smjer->naziv?></li>
+    <?php endforeach; ?>
+</ol>

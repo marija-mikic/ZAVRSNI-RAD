@@ -116,9 +116,9 @@ insert into pice(sifra,naziv,slika,cijena,vrsta) values
 (null,'cocacola','pice.jpg','10',4);
 
 insert into kupac(sifra, ime,prezime,adresa,email,lozinka) values
-(null,'Marija','Mikic','B.Adzije 26',null,null),
-(null,'Ana','Jurić','B.Jelacica 30',null,null),
-(null,'Bruno','Klaric','Stepinca 10',null,null);
+(null,'Marija','Mikic','B.Adzije 26','m@gmail','1'),
+(null,'Ana','Jurić','B.Jelacica 30','m@gmail','2'),
+(null,'Bruno','Klaric','Stepinca 10','m@gmail','3');
 
 insert into narudzba (sifra,proizvodi,mjestopreuzimanja,datum,ukupno,kupac) values
 (null,'pizza','dostava','2021-12-05','100',1),

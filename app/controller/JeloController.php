@@ -12,10 +12,7 @@ class JeloController extends AutorizacijaController
 
     {
        
-       print_r(Jelo::read());
-       $this->view->render($this->viewDir . 'index',[
-        
-       ]);
+       $this->view->render($this->viewDir . 'index');
              
     }   
 } 
