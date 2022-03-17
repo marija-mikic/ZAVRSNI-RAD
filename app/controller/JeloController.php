@@ -14,8 +14,6 @@ class JeloController extends AutorizacijaController
     public function __construct()
     {
         parent::__construct();
-        $this->nf = new \NumberFormatter("hr-HR", \NumberFormatter::DECIMAL);
-        $this->nf->setPattern('#,##0.00 kn');
         $this->jelo = new stdClass();
         $this->jelo->naziv='';
         $this->jelo->sastav='';
