@@ -10,6 +10,7 @@ class PizzaController extends JeloController
             private $poruka;
             private $pizza;
 
+
             public function __construct()
             {
                 parent::__construct();
@@ -22,10 +23,11 @@ class PizzaController extends JeloController
 
     public function index()
             {
-                $pizze = Pizza::read();
+                $pizze=Pizza::read();
                 
                 $this->view->render($this->viewDir . 'index',[
                 'pizze' => $pizze,
+                'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/pizzeIndex.css">'
                ]);
             }
     
