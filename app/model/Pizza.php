@@ -10,7 +10,7 @@ class Pizza
         select b.naziv,b.sastav,b.cijena
         from vrsta a
         inner join jelo b on a.sifra = b.vrsta 
-        where b.vrsta =7;
+        where b.vrsta =4;
         
         '); 
         $izraz->execute();
