@@ -1,6 +1,6 @@
 <?php
 
-class PlataController extends PiceController
+class PlataController extends Controller
 
 {
 
@@ -13,6 +13,7 @@ class PlataController extends PiceController
                 parent::__construct();
                 $this->plata = new stdClass();
                 $this->plata->naziv='';
+                $this->plata->slika='';
                 $this->plata->sastav='';
                 $this->plata->cijena='';
                 
