@@ -16,6 +16,7 @@ class PizzaController extends JeloController
                 parent::__construct();
                 $this->pizza = new stdClass();
                 $this->pizza->naziv='';
+                $this->pizza->slika='';
                 $this->pizza->sastav='';
                 $this->pizza->cijena='';
                 

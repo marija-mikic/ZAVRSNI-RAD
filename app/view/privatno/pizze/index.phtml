@@ -111,28 +111,18 @@
     </style>
   </head>
   <body>
-    <div class="gallery">
-      <div class="content">
-        <img src="<?=App::config('url')?>public/img/pizza1.jpg">
-        <h3>Ljutica</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <h6>$100.00</h6>
-        <button class="buy-1">Naruči</button>
-      </div>
-      <div class="content">
-        <img src="<?=App::config('url')?>public/img/pizza2.jpg">
-        <h3>Slavonka</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <h6>$40.00</h6>
-        <button class="buy-2">Naruči</button>
-      </div>
-      <div class="content">
-        <img src="<?=App::config('url')?>public/img/pizza3.jpg">
-        <h3>Capricosa</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <h6>$70.84</h6>
-         <button class="buy-3">Naruči</button>
-      </div>
+  <div class="grid-x grid-padding-x">  
+  <div class="gallery">
+    <div class="content">
+    <?php foreach($pizze as $p): ?>
+    <img src="<?=App::config('url')?>public/img/<?=$p->slika?>">
+    <h3><?=$p->naziv?></h3>
+    <p><?=$p->sastav?></p>
+    <h6><?=$p->cijena?></h6>
+    <button class="buy-1">Naruči</button>
+    <?php endforeach; ?>
     </div>
+  </div>
+  </div>
   </body>
 </html>
