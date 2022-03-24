@@ -1,8 +1,8 @@
-drop database if exists zavrsni;
-create database zavrsni;
-use zavrsni;     
-
-alter database zavrsni character set utf8mb4;
+drop database if exists zavrsnirad;
+create database zavrsnirad;
+use zavrsnirad;     
+# C:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < D:\EdunovaPP24\zavrsnirad.sql
+alter database zavrsnirad character set utf8mb4;
 
 create table operater (
     sifra int not null primary key auto_increment,
@@ -15,9 +15,9 @@ create table operater (
 
 create table jelo (
     sifra int  primary key not null auto_increment,
+    slika varchar(100),
     naziv varchar (50),
     sastav varchar(50) not null,
-    slika varchar(100) not null,
     cijena decimal(18,2),
     vrsta int
 );
@@ -39,7 +39,7 @@ create table vrsta(
 create table narudzba(
     sifra int primary key not null auto_increment,
     proizvodi varchar(200) not null,
-    mjestopreuzimanja varchar(30) not null,
+    adresa varchar(100) not null,
     datum datetime,
     ukupno int not null,
     kupac int
@@ -47,8 +47,8 @@ create table narudzba(
 
 create table pice(
     sifra int primary key not null auto_increment,
+    slika varchar(100),
     naziv varchar(30) not null,
-    slika varchar(100) not null,
     cijena decimal(18,2)not null,
     vrsta int
 );
@@ -69,6 +69,7 @@ create table narudzba_pice (
     kolicina int not null
 );
 
+
 alter table jelo add foreign key (vrsta) references vrsta(sifra);
 alter table narudzba add foreign key (kupac) references kupac(sifra);
 alter table pice add foreign key (vrsta) references vrsta(sifra);
@@ -84,47 +85,37 @@ insert into operater(email,lozinka,ime,prezime,uloga) values
 ('oper@mamik-dj.shop','$2a$12$S6vnHiwtRDdoUW4zgxApvezBlodWj/tmTADdmKxrX28Y2FXHcoHOm','Operater','Mamik-dj','oper');
 
 insert into vrsta(sifra,naziv) values
-(null,'pivo'),
-(null,'vino'),
-(null,'jaka alkoholna pica'),
-(null,'bezalkoholna pića'),
-(null,'topli napici'),
-(null,'rostilj'),
+(null,'salate'),
+(null,'pica'),
+(null,'plate'),
 (null,'pizza');
-
-insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta) values
-(null,'Ćevapi u somunu','lepinja, luk, ajvar','jelo.jpg','30',6),
-(null,'Ćevapi i pommes frites','lepinja, luk, pommes frites, ajvar','jelo.jpg','30',6),
-(null,'Ražnjići',' lepinja, luk, ajvar, pommes frites','jelo.jpg','30',6),
-(null,'Punjena pljeskavica', 'sir, lepinja, luk, ajvar, pommes frites','jelo.jpg','31',6),
-(null,'Pljeskavica','lepinja, luk, ajvar, pommes frites','jelo.jpg','31',6),
-(null,'Miješano meso','lepinja, carsko, kotlet','jelo.jpg','31',6),
-(null,'Bianco capri','sir, gljive, šunka, vrhnje','jelo.jpg','30',7),
-(null,'Bianco','vrhnje, sir, špek, feferoni','jelo.jpg','30',7),
-(null,'Peperone	rajčica',' sir, šunka, gljive, češnjak,feferoni','jelo.jpg','30',7),
-(null,'Pigalo bianco', 'vrhnje, sir, suhi vrat, svježa paprika','jelo.jpg','31',7),
-(null,'Pileća','rajčica, sir, gljive, piletina','jelo.jpg','31',7),
-(null,'Dalmatina','rajčica, sir, pršut, masline, gljive','jelo.jpg','31',7),
-(null,'Pršuto','sir, rajčica, pršut, masline, gljive, slanina','jelo.jpg','32',7),
-(null,'Đakovačka','sir, rajčica, kulen, slanina, luk, ajvar','jelo.jpg','31',7),
-(null,'Strossmayerova','sir, rajčica, kulen, šunka, gorgonzola, vrhnje','jelo.jpg','32',7),
-(null,'Ljutica','sir, rajčica, kulen, čili, ljuti feferoni, ajvar','jelo.jpg','30',7);
-
-insert into pice(sifra,naziv,slika,cijena,vrsta) values
-(null,'pann','pice.jpg','15',1),
-(null,'grasevina','pice.jpg','25',2),
-(null,'cocacola','pice.jpg','10',4);
 
 insert into kupac(sifra, ime,prezime,adresa,email,lozinka) values
 (null,'Marija','Mikic','B.Adzije 26','m@gmail','1'),
 (null,'Ana','Jurić','B.Jelacica 30','m@gmail','2'),
 (null,'Bruno','Klaric','Stepinca 10','m@gmail','3');
 
-insert into narudzba (sifra,proizvodi,mjestopreuzimanja,datum,ukupno,kupac) values
+insert into narudzba (sifra,proizvodi,adresa,datum,ukupno,kupac) values
 (null,'pizza','dostava','2021-12-05','100',1),
 (null,'pizza','dostava','2021-12-05','100',2),
 (null,'pizza','dostava','2021-12-05','100',2);
 
+
+insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta) values
+(null,'Ćevapi u somunu','lepinja, luk, ajvar','mjesano.jpg','30',3),
+(null,'Ćevapi i pommes frites','lepinja, luk, pommes frites, ajvar','cevapisapomesom.jpg','30',3),
+(null,'Ražnjići',' lepinja, luk, ajvar, pommes frites','raznjici.jpg','30',3),
+(null,'Peperone	rajčica',' sir, šunka, gljive, češnjak,feferoni','pizza1.jpg','30',4),
+(null,'Pršuto','sir, rajčica, pršut, masline, gljive, slanina','pizza2.jpg','32',4),
+(null,'Đakovačka','sir, rajčica, kulen, slanina, luk, ajvar','pizza3.jpg','31',4),
+(null,'zelena','sir, rajčica, kulen, šunka, gorgonzola, vrhnje','zelenasalata.jpg','32',1),
+(null,'rajčica','sir, rajčica, kulen, čili, ljuti feferoni, ajvar','rajcica.jpg','30',1),
+(null,'sopska','sir, rajčica, kulen, čili, ljuti feferoni, ajvar','sopskasalata.jpg','30',1);
+
+insert into pice(sifra,naziv,slika,cijena,vrsta) values
+(null,'pann','pan.jpg','15',2),
+(null,'grasevina','grasevina.jpg','25',2),
+(null,'cocacola','coca-cola.jpg','10',2);
 
 insert into narudzba_pice (sifra,pice,narudzba,cijena,kolicina) values
 (null,1,1,'20','2');
@@ -134,4 +125,6 @@ insert into narudzba_jelo (sifra,jelo,narudzba,kolicina,cijena) values
 (null,1,2,'2',20),
 (null,1,3,'2',20),
 (null,1,2,'2',20);
+
+
 
