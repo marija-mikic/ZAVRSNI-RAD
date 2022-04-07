@@ -1,0 +1,23 @@
+<div class="sidenav">
+    <ul class="submenu menu vertical">
+      <li><a href="<?= App::config('url') ?>" class="homepage"><?= App::config('naslovApp')?></a></li>
+
+        <li><a href="<?= App::config('url') ?>profili/index">Moj profil</a></li>
+        <li><a href="<?= App::config('url') ?>povijest/index">Moje narudžbe</a></li>
+        <li><a href="<?=App::config('url')?>login/odjava">Odjava </a></li>
+    </ul>
+</div>
+
+<div class="grid-x grid-padding-x">
+    <div class="cell large-4">
+   
+        <fieldset>
+            <legend>MOJI PODACI</legend>
+            <label>
+                IME
+                <input type="text" name="naziv" value="<?=$profili->ime?>" />
+                PREZIME
+                <input type="text" name="naziv" value="<?=$profili->prezime?>" />
+                ADRESA
+                <input type="text" name="naziv" value="<?=$profili->adresa?>" />
+            </label>
