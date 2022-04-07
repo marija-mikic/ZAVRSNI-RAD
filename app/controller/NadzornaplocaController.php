@@ -6,6 +6,6 @@ class NadzornaplocaController extends AutorizacijaController
 
     public function index()
     {
-        $this->view->render($this->viewDir . 'nadzornaPloca');
+        $this->view->render($this->viewDir . 'Nadzornaploca');
     }
 }
