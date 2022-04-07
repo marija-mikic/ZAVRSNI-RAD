@@ -1,6 +1,6 @@
 <?php
 
-class SalataController extends JeloController
+class SalataController extends Controller
 
 {
 

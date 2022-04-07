@@ -1,6 +1,6 @@
 <?php
 
-class PizzaController extends JeloController
+class PizzaController extends  Controller
 {
 
     private $viewDir=
