@@ -1,0 +1,24 @@
+<div class="grid-x">
+    <div class="cell large-6">
+        <h1 style="font-size: 1.5rem;">POVIJEST NARUDZBI</h1>
+    </div>
+    <table>
+    <thead>
+        <tr>
+            <th>Proizvod</th>
+            <th>Adresa Dostave</th>
+            <th>Datum</th>
+            <th>Ukupno</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($narudzbe as $narudzba): ?>
+            <tr>
+                <td><?=$narudzba->proizvodi?></td>
+                <td><?=$narudzba->adresa?></td>
+                <td><?=$narudzba->datum?></td>
+                <td><?=$narudzba->ukupno?></td>               
+              </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
