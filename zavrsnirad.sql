@@ -29,6 +29,7 @@ create table kupac(
     adresa varchar(40) not null,
     email varchar(50) not null,
     lozinka char (60) not null
+  
 );
 
 create table vrsta(
@@ -42,7 +43,8 @@ create table narudzba(
     adresa varchar(100) not null,
     datum datetime,
     ukupno int not null,
-    kupac int
+    kupac int,
+    naruceno boolean
 );
 
 create table pice(
@@ -69,6 +71,15 @@ create table narudzba_pice (
     kolicina int not null
 );
 
+create table status_narudzbe(
+sifra int primary key not null auto_increment,
+zaprimljeno boolean,
+u_izradi boolean,
+u_dostavi boolean,
+dostavljeno boolean
+
+);
+
 
 alter table jelo add foreign key (vrsta) references vrsta(sifra);
 alter table narudzba add foreign key (kupac) references kupac(sifra);
@@ -77,6 +88,7 @@ alter table narudzba_jelo add foreign key(jelo) references jelo(sifra);
 alter table narudzba_pice add foreign key(pice) references pice(sifra);
 alter table narudzba_jelo add foreign key(narudzba) references narudzba(sifra);
 alter table narudzba_pice add foreign key(narudzba) references narudzba(sifra);
+
 
 insert into operater(email,lozinka,ime,prezime,uloga) values
 # lozinka a
@@ -102,15 +114,15 @@ insert into narudzba (sifra,proizvodi,adresa,datum,ukupno,kupac) values
 
 
 insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta) values
-(null,'Ćevapi u somunu','lepinja, luk, ajvar','mjesano.jpg','30',3),
-(null,'Ćevapi i pommes frites','lepinja, luk, pommes frites, ajvar','cevapisapomesom.jpg','30',3),
+(null,'Čevapi u somunu','lepinja, luk, ajvar','mjesano.jpg','30',3),
+(null,'Čevapi i pommes frites','lepinja, luk, pommes frites, ajvar','cevapisapomesom.jpg','30',3),
 (null,'Ražnjići',' lepinja, luk, ajvar, pommes frites','raznjici.jpg','30',3),
 (null,'Peperone	rajčica',' sir, šunka, gljive, češnjak,feferoni','pizza1.jpg','30',4),
 (null,'Pršuto','sir, rajčica, pršut, masline, gljive, slanina','pizza2.jpg','32',4),
 (null,'Đakovačka','sir, rajčica, kulen, slanina, luk, ajvar','pizza3.jpg','31',4),
-(null,'zelena','sir, rajčica, kulen, šunka, gorgonzola, vrhnje','zelenasalata.jpg','32',1),
-(null,'rajčica','sir, rajčica, kulen, čili, ljuti feferoni, ajvar','rajcica.jpg','30',1),
-(null,'sopska','sir, rajčica, kulen, čili, ljuti feferoni, ajvar','sopskasalata.jpg','30',1);
+(null,'Zelena','sir, rajčica, kulen, šunka, gorgonzola, vrhnje','zelenasalata.webp','32',1),
+(null,'Rajčica','sir, rajčica, kulen, čili, ljuti feferoni, ajvar','rajcica.jpg','30',1),
+(null,'Šopska','sir, rajčica, kulen, čili, ljuti feferoni, ajvar','sopskasalata.jpeg','30',1);
 
 insert into pice(sifra,naziv,slika,cijena,vrsta) values
 (null,'pann','pan.jpg','15',2),
