@@ -1,106 +1,63 @@
-<div class="card single-accordion">
-						    <div class="card-header" id="headingTwo">
-						      <h5 class="mb-0">
-						          PODACI ZA DOSTAVU
-                                <div class="cart-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-						<table class="cart-table">
-							<thead class="cart-table-head">
-								<tr class="table-head-row">
-									<th class="product-remove"></th>		
-                                    <th class="product-name">IME I PREZIME</th>
-									<th class="product-price">ADRESA</th>
-                                    <th class="telefon">KONTAKT BROJ</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-body-row">
-                                    <TD></TD>
-									<td class="product-name">MARIJA</td>
-									<td class="product-price">BA</td>
-                                    <td class="telefon">540654654065465</td>
-									
-								</tr>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-						      </h5>
-                               </div>
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>NARUDŽBA</p>
-						</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end breadcrumb section -->
-
-	<!-- cart -->
-	<div class="cart-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-						<table class="cart-table">
-							<thead class="cart-table-head">
-								<tr class="table-head-row">
-									<th class="product-remove"></th>		
-                                    <th class="product-name">NAZIV</th>
-									<th class="product-price">CIJENA</th>
-									<th class="product-quantity">KOLIČINA</th>
-									<th class="product-total">UKUPNO</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-body-row">
-                                    <TD></TD>
-									<td class="product-name">Strawberry</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"></td>
-									<td class="product-total">1</td>
-								</tr>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-				<div class="col-lg-4">
-					<div class="total-section">
-						<table class="total-table">
-							<thead class="total-table-head">
-								<tr class="table-total-row">
-									<th>UKUPNO</th>
-									<th>CIJENA</th>
-								</tr>
-							</thead>
-							<tbody>
-															
-								<tr class="total-data">
-									<td><strong>UKUPNO: </strong></td>
-									<td>$545</td>
-								</tr>
-							</tbody>
-						</table>
-</div>
-
-					
-				</div>
-			</div>
-		</div>
-	</div>
-						
-                			 
+<table class="dashboard-table">
+  <colgroup>
+    <col width="150">
+    <col width="80">
+    <col width="200">
+    <col width="60">
+    <col width="220">
+    <col width="170">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>IME I PREZIME</th>
+      <th> ADRESA </th>
+      <th> BROJ TELEFONA </th>
+      <th> NAZIV</th>
+      <th> CIJENA </th>
+      <th> KOLIČINA </th>
+    </tr>
+  </thead>
+  <tbody>  
+    <tr>
+      <td>
+        <div class="flex-container align-justify align-top">
+          <div class="flex-child-shrink">
+            
+          </div>
+          <div class="flex-child-grow">
+            <h6 class="dashboard-table-text">A Person</h6>
+            <span class="dashboard-table-timestamp">03/04/2017</span>
+          </div>
+        </div>
+      </td>
+      <td>Single Line</td>
+      <td class="bold">A Bold Line</td>
+      <td>A Date</td>
+      <td>
+        <div class="flex-container align-top">
+          <div class="flex-child-shrink">
+            
+          </div>
+          <div class="flex-child">
+            <h6 class="dashboard-table-text">Another person did something</h6>
+            <span class="dashboard-table-timestamp">03/08/2017</span>
+          </div>
+        </div>
+      </td>
+      <td class="listing-inquiry-status">
+      
+        <div class="flex-container align-top">
+          <div class="flex-child-shrink">
+            
+          </div>
+          <div class="flex-child">
+            <h6 class="dashboard-table-text"> A longer wrapping item with an image that is aligned to the top</h6>
+          </div>
+        </div>
+      
+      </td>
+    </tr>		
+	</table>        			 
 
 <div class="container-fluid">
     <form id="status-update-form">
@@ -114,8 +71,12 @@
                 <option value="5" <?php echo $_GET['status'] == 3 ? "selected" : '' ?>>Dostavljeno</option>                                       
                 </select>
         </div>
+		
     </form>
+	
 </div>
+
+</tbody>
 <script>
     $(function(){
         $('#status-update-form').submit(function(e){
