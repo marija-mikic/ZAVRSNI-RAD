@@ -42,7 +42,7 @@ class JeloController extends AutorizacijaController
     }
 	
 	
-	    public function add()
+	    public function novi()
     {
         echo("Unutar add metode");
         //$jelo = $this->Jelo->newEmptyEntity();
