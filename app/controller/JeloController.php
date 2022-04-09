@@ -44,7 +44,7 @@ class JeloController extends AutorizacijaController
 	
 	    public function add()
     {
-        $jelo = $this->Jelo->newEmptyEntity();
+        //$jelo = $this->Jelo->newEmptyEntity();
         if ($this->request->is('post')) {
             $jelo = $this->Jelo->patchEntity($jelo, $this->request->getData());
             if ($this->Jelo->save($jelo)) {
