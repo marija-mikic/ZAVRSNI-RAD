@@ -15,7 +15,6 @@ class JeloController extends Controller
     {
         parent::__construct();
         $this->jelo = new stdClass();
-        $this->nf->setPattern('#,##0.00 kn');
         $this->jelo->naziv='';
         $this->jelo->sastav='';
         $this->jelo->cijena='';
