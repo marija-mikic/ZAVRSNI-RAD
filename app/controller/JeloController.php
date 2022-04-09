@@ -44,18 +44,19 @@ class JeloController extends AutorizacijaController
 	
 	    public function add()
     {
+        echo("Unutar add metode");
         //$jelo = $this->Jelo->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $jelo = $this->Jelo->patchEntity($jelo, $this->request->getData());
-            if ($this->Jelo->save($jelo)) {
-                $this->Flash->success(__('The jelo has been saved.'));
+       // if ($this->request->is('post')) {
+       //     $jelo = $this->Jelo->patchEntity($jelo, $this->request->getData());
+       //     if ($this->Jelo->save($jelo)) {
+       //         $this->Flash->success(__('The jelo has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The jelo could not be saved. Please, try again.'));
-        }
-        $narudzba = $this->Jelo->Narudzba->find('list', ['limit' => 200])->all();
-        $this->set(compact('jelo', 'narudzba'));
+            //    return $this->redirect(['action' => 'index']);
+            //}
+            //$this->Flash->error(__('The jelo could not be saved. Please, try again.'));
+        //}
+        //$narudzba = $this->Jelo->Narudzba->find('list', ['limit' => 200])->all();
+        //$this->set(compact('jelo', 'narudzba'));
     }
 	
 	
