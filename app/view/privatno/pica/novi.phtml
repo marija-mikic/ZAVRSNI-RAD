@@ -1,18 +1,14 @@
-<form action="<?=App::config('url')?>jelo/dodajNovi" method="post">
+<form action="<?=App::config('url')?>pice/dodajNovi" method="post">
 
     <fieldset>
         <legend>Dodavanje novog pića</legend>
 
 
-        <label>
-            Naziv
-            <input type="text" name="naziv" value="<?=$pice->naziv?>" />
-        </label>
-
+        <label for="naziv"> Naziv </label>
+        <input type="text" name="naziv" value="<?=$pice->naziv?>" />
         
 
-        <label>
-            <label for="cijena">Cijena</label>
+        <lebel for="cijena">Cijena</label>
         <input type="text" name="cijena" id="cijena" value="<?=$pice->cijena?>">
 
         <div class="grid-x grid-padding-x">
