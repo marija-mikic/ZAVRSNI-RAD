@@ -107,10 +107,10 @@ insert into kupac(sifra, ime,prezime,adresa,email,lozinka) values
 (null,'Ana','Jurić','B.Jelacica 30','m@gmail','2'),
 (null,'Bruno','Klaric','Stepinca 10','m@gmail','3');
 
-insert into narudzba (sifra,proizvodi,adresa,datum,ukupno,kupac) values
-(null,'pizza','dostava','2021-12-05','100',1),
-(null,'pizza','dostava','2021-12-05','100',2),
-(null,'pizza','dostava','2021-12-05','100',2);
+insert into narudzba (sifra,proizvodi,adresa,datum,ukupno,kupac,naruceno) values
+(null,'pizza','dostava','2021-12-05','100',"thrue",1),
+(null,'pizza','dostava','2021-12-05','100',"false",2),
+(null,'pizza','dostava','2021-12-05','100',"false",2);
 
 
 insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta) values
