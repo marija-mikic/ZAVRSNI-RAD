@@ -8,7 +8,7 @@ class Pice
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
         
-            select * pice where sifra=:parametar;
+            select * from pice where sifra=:parametar;
         
         '); 
         $izraz->execute(['parametar'=>$kljuc]);
@@ -49,7 +49,7 @@ class Pice
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
         
-            update jelo set 
+            update pice set 
                 naziv=:naziv,
                 cijena=:cijena,
                 where sifra=:sifra;
