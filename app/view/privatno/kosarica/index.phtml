@@ -5,7 +5,7 @@
 		</div>
 		<div class='row'>		
 		<?php
-		if(!empty($_SESSION["cart"])){
+		if(!empty("kosarica")){
 		?>      
 			<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -68,7 +68,7 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="<?=App::config('url')?>index" class="boxed-btn">NADOPUNI KOŠARICU</a>
+						<a  class="alert button expanded" href="<?=App::config('url')?>index" >NADOPUNI KOŠARICU</a>
 							<a href="<?=App::config('url')?>potvrda/index" class="boxed-btn black">POTVRDI NARUDŽBU</a>
 						</div>
 					</div>
@@ -80,17 +80,17 @@
 	</div>
 			
 		<?php
-		} elseif(empty($_SESSION["cart"])){
+		} elseif(empty("kosarica")){
 		?>
 			<div class="container">
 			<div class="jumbotron">
 			<h3>Kad si gladan ,nisi svoj!</h3>
-            <h3>Požuri , <a href="<?=App::config('url')?>">POGLEDAJ</a> i naruči .</h3>        
+            <h3>Požuri , <a href="<?=App::config('url')?>index">POGLEDAJ</a> i naruči .</h3>        
 			</div>      
 			</div>    
 		<?php
 		}
-		?>		
+		?>	
 		</div>		   
 	</div> 	
 </div>
