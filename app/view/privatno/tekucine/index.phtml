@@ -1,13 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Responsive Ecommerce Product Cards In HTML/CSS</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style type="text/css">
+<style type="text/css">
       body{
       margin: 0;
       font-family:Nunito Sans;
@@ -56,7 +47,7 @@
       }
       p{
       text-align: center;
-      color: #b2bec3;
+      color: #3b3a30;
       padding: 0 8px;
       }
       h6{
@@ -100,12 +91,8 @@
       .buy-1{
       background-color: #0b0b0b;
       }
-      .buy-2{
-      background-color: #0b0b0b;
-      }
-      .buy-3{
-      background-color: #0b0b0b;
-      }
+      
+    
       @media(max-width: 1000px){
       .content{
       width: 46%;
@@ -119,27 +106,23 @@
     </style>
   </head>
   <body>
-    <div class="gallery">
-      <div class="content">
-        <img src="<?=App::config('url')?>public/img/pan.jpg">
-        <h3>Pann</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <h6>$100.00</h6>
-        <button class="buy-1">Naruči</button>
-      </div>
-      <div class="content">
-        <img src="<?=App::config('url')?>public/img/grasevina.jpg">
-        <h3>Graševina</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <h6>$40.00</h6>
-        <button class="buy-2">Naruči</button>
-      </div>
-      <div class="content">
-        <img src="<?=App::config('url')?>public/img/coca-cola.jpg">
-        <h3>Coca Cola</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <h6>$70.84</h6>
-         <button class="buy-3">Naruči</button>
+  <div class="grid-x grid-padding-x" style="text-align: center">    
+     <div class="gallery">     
+        <div class="content">
+          <?php foreach($tekucine as $tekucina): ?>
+              <form action="<?=App::config('url')?>Kosarica/dodaj/<?=$tekucina->sifra?>" method="post">  
+                <div class="large-12">
+                      <img src="<?=App::config('url')?>public/img/<?=$tekucina->slika?>">
+                      <h3><?=$tekucina->naziv?></h3>
+                      <h6><?=$tekucina->cijena?></h6>
+                      <h5 class="text-info">Količina: <input type="number" min="1" max="25" name="kolicina" class="form-control" value="1" style="width: 60px;"> </h5>
+                      <input type="submit" name="add" style="margin-top:5px;" class="btn btn-success" value="Add to Cart"> 
+                      <input type="hidden" name="tekucina" value="true">
+                    </div>
+                    </form>                     
+                      <?php endforeach; ?>           
+      <div>
+               
       </div>
     </div>
   </body>

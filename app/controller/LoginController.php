@@ -5,6 +5,8 @@ class LoginController extends Controller
     public function index()
     {
         $this->loginView('Popunite email i lozinku','');
+
+     
     }
 
     public function autoriziraj()
@@ -26,14 +28,40 @@ class LoginController extends Controller
 
          // 100% sam siguran da je korisnik unio email i lozinku
          $operater = Operater::autoriziraj($_POST['email'],$_POST['lozinka']);
-         if($operater==null){
-             $this->loginView('Neispravna kombinacija email i lozinka',$_POST['email']);
-             return;
-         }
+         $kupac = Kupac::autoriziraj($_POST['email'],$_POST['lozinka']);
+     
+        // else{
+        //    $this->loginView('Neispravna kombinacija email i lozinka',$_POST['email']);
+            //return;
+        // }
+        
+        //print_r($operater);
+        print_r($kupac);
 
-         $_SESSION['autoriziran']=$operater;
+        if($operater != null){
+            $_SESSION['autoriziran']=$operater;
+        }
+        else if($kupac != null){
+            $_SESSION['autoriziran']=$kupac;
+        }
+        else{
+            $this->loginView('Neispravna kombinacija email i lozinka',$_POST['email']);
+            return;
+        }
+
+         
          $np = new NadzornaplocaController();
          $np->index();
+
+          
+        // if(isset($_SESSION['autoriziran']->uloga) && ($_SESSION['autoriziran']->uloga == 'admin')){
+        //     include_once 'app/view/privatno/Nadzornaploca.phtml';
+        // }else{
+        //     include_once 'app/view/privatno/Kosarica.phtml';
+         //}
+        
+
+         
     }
 
     public function odjava()

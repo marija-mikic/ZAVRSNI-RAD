@@ -1,5 +1,5 @@
 <?php
-class view{
+class View{
     private $predlozak;
     public function __construct($predlozak='predlozak')
     {

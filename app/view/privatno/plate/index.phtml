@@ -1,5 +1,4 @@
-
-    <style type="text/css">
+<style type="text/css">
       body{
       margin: 0;
       font-family:Nunito Sans;
@@ -48,7 +47,7 @@
       }
       p{
       text-align: center;
-      color: #b2bec3;
+      color: #3b3a30;
       padding: 0 8px;
       }
       h6{
@@ -92,12 +91,8 @@
       .buy-1{
       background-color: #0b0b0b;
       }
-      .buy-2{
-      background-color: #0b0b0b;
-      }
-      .buy-3{
-      background-color: #0b0b0b;
-      }
+      
+    
       @media(max-width: 1000px){
       .content{
       width: 46%;
@@ -111,20 +106,25 @@
     </style>
   </head>
   <body>
-  <div class="grid-x grid-margin-x">
-  
-    <div class="gallery">
-      <div class="content">
-      <?php foreach($plate as $p): ?>
-      <img src="<?=App::config('url')?>public/img/<?=$p->slika?>">
-      <h3><?=$p->naziv?></h3>
-      <p><?=$p->sastav?></p>
-      <h6><?=$p->cijena?></h6>
-      <button class="buy-1">Naruči</button>
-      <?php endforeach; ?>
+  <div class="grid-x grid-padding-x" style="text-align: center">    
+     <div class="gallery">     
+        <div class="content">
+          <?php foreach($plate as $plata): ?>
+              <form action="<?=App::config('url')?>Kosarica/dodaj/<?=$plata->sifra?>" method="post">  
+                <div class="large-12">
+                      <img src="<?=App::config('url')?>public/img/<?=$plata->slika?>">
+                      <h3><?=$plata->naziv?></h3>
+                       <p><?=$plata->sastav?></p>
+                      <h6><?=$plata->cijena?></h6>
+                      <h5 class="text-info">Količina: <input type="number" min="1" max="25" name="kolicina" class="form-control" value="1" style="width: 60px;"> </h5>
+                      <input type="submit" name="add" style="margin-top:5px;" class="btn btn-success" value="Add to Cart"> 
+                      <input type="hidden" name="plata" value="true">
+                    </div>
+                    </form>                     
+                      <?php endforeach; ?>           
+      <div>
+               
       </div>
     </div>
-    </div>
- 
   </body>
 </html>

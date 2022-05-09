@@ -1,6 +1,6 @@
 <div class="grid-x">
     <div class="cell large-6">
-        <h1 style="font-size: 1.5rem;">PIĆA</h1>
+        <h1 style="font-size: 1.5rem;">pica</h1>
     </div>
     
     <div class="cell large-6" style="text-align: right;">
@@ -16,8 +16,6 @@
         <tr>
             <th>Naziv</th>
             <th>Cijena</th>
-            <th></th>
-            <th></th>
             <th>Akcija</th>
         </tr>
     </thead>
@@ -27,14 +25,13 @@
             <tr>
                 <td><?=$pice->naziv?></td>
                 <td><?=$pice->cijena?></td>
-                <td></td>
-                <td></td>
+                 <td></td>
                  <td>
                         <a href="<?=App::config('url')?>pice/promjena/<?=$pice->sifra?>">
                             <i title="Promjeni &quot;<?=$pice->naziv?>&quot;" 
                             class="fas fa-2x fa-edit"></i>
                         </a> 
-                        <a onclick="return confirm('Sigurno obrisati <?=$pice->naziv?>?');" style="margin-left: 20px;" href="<?=App::config('url')?>jelo/brisanje/<?=$jelo->sifra?>">
+                        <a onclick="return confirm('Sigurno obrisati <?=$pice->naziv?>?');" style="margin-left: 20px;" href="<?=App::config('url')?>pice/brisanje/<?=$pice->sifra?>">
                             <i style="color: red" title="Obriši <?=$pice->naziv?>" 
                             class="fas fa-2x fa-trash"></i>
                         </a>  

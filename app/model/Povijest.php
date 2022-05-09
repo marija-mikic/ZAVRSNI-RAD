@@ -23,11 +23,15 @@ class Povijest
         
                 select *
                 from narudzba
+                where kupac=:sifrakupca and naruceno=true
         
         ');
-        $izraz->execute();
+        $izraz->execute([
+            'sifrakupca'=> $sifra
+        ]);
         return  $izraz->fetchAll();
     }
+
 
     
 }

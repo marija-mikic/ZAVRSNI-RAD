@@ -12,8 +12,11 @@ class SalataController extends Controller
             {
                 parent::__construct();
                 $this->salata = new stdClass();
+
+                $this->salata->sifra='';
                 $this->salata->naziv='';
                 $this->salata->sastav='';
+                $this->salata->slika='';
                 $this->salata->cijena='';
                 
             }

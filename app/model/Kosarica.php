@@ -20,7 +20,7 @@ class Kosarica {
 
 		select sifra, kupac 
 		from narudzba 
-		where naruceno = false;
+		where naruceno = 0;
             
         ');
         $izraz->execute([

@@ -1,21 +1,21 @@
-<form action="<?=App::config('url')?>jelo/novi" method="post">
+<form action="<?=App::config('url')?>jelo/dodajNovi" method="post">
 
     <fieldset>
         <legend>Dodavanje novog jela</legend>
 
 
-        <label>
-            Naziv
-            <input type="text" name="naziv" value="<?=$jelo->naziv?>" />
-        </label>
+    
+        <label for="naziv">Naziv</label> 
+        <input type="text" name="naziv" value="<?=$jelo->naziv?>" />
+       
 
-        <label>
-            Sastav
-            <input type="text" name="sastav" value="<?=$jelo->sastav?>" />
-        </label>
+    
+        <label for="sastav">Sastav</label>
+        <input type="text" name="sastav" value="<?=$jelo->sastav?>" />
+        
 
-        <label>
-            <label for="cijena">Cijena</label>
+       
+        <label for="cijena">Cijena</label>
         <input type="text" name="cijena" id="cijena" value="<?=$jelo->cijena?>">
 
         <div class="grid-x grid-padding-x">

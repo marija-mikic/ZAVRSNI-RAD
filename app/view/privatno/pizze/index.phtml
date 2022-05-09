@@ -1,13 +1,5 @@
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-    </head>
-    <style >
+    <style type="text/css">
       body{
       margin: 0;
       font-family:Nunito Sans;
@@ -112,27 +104,31 @@
       width: 100%;
       }
       }
-      </style>
-    <body>
-    <div class="grid-x grid-padding-x" style="text-align: center">    
+    </style>
+  </head>
+  <body>
+  <div class="grid-x grid-padding-x" style="text-align: center">    
      <div class="gallery">     
-        <div class="content">              
-                <form action="<?=App::config('url')?>kosarica/add" method="post">
-                <?php foreach($pizze as $p): ?>
-                  <div class="large-12">
+        <div class="content">
+          <?php foreach($pizze as $p): ?>
+              <form action="<?=App::config('url')?>Kosarica/dodaj/<?=$p->sifra?>" method="post">  
+                <div class="large-12">
                       <img src="<?=App::config('url')?>public/img/<?=$p->slika?>">
                       <h3><?=$p->naziv?></h3>
                        <p><?=$p->sastav?></p>
                       <h6><?=$p->cijena?></h6>
                       <h5 class="text-info">Količina: <input type="number" min="1" max="25" name="kolicina" class="form-control" value="1" style="width: 60px;"> </h5>
-                      <input type="submit" name="add" style="margin-top:5px;" class="btn btn-success" value="Add to Cart">         
-                   <?php endforeach; ?>            
-               </div>
-           </form>
-        </div>
+                      <input type="hidden" name="sifra" value="<?=$p->sifra?>">
+                      <input type="hidden" name="naziv" value="<?=$p->naziv?>">
+                      <input type="hidden" name="cijena" value="<?=$p->cijena?>">
+                      <input type="submit" name="add" style="margin-top:5px;" class="btn btn-success" value="Add to Cart"> 
+                      
+                    </div>
+                    </form>                     
+                      <?php endforeach; ?>           
+      <div>
+               
       </div>
     </div>
-    </body>
-    </html>
-    
-    
+  </body>
+</html>

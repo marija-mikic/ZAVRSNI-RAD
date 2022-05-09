@@ -1,6 +1,6 @@
 <?php
 
-class TekuciController extends  Controller
+class TekuciController extends Controller
 
 {
 
@@ -12,7 +12,9 @@ class TekuciController extends  Controller
             {
                 parent::__construct();
                 $this->tekuci = new stdClass();
+                $this->tekuci->sifra='';
                 $this->tekuci->naziv='';
+                $this->tekuci->slika='';
                 $this->tekuci->cijena='';
                 
             }

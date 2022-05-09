@@ -1,6 +1,6 @@
 <?php
 
-class PizzaController extends  Controller
+class PizzaController extends Controller
 {
 
     private $viewDir=
@@ -15,6 +15,7 @@ class PizzaController extends  Controller
             {
                 parent::__construct();
                 $this->pizza = new stdClass();
+                $this->pizza->sifra='';
                 $this->pizza->naziv='';
                 $this->pizza->slika='';
                 $this->pizza->sastav='';
@@ -28,7 +29,7 @@ class PizzaController extends  Controller
                 
                 $this->view->render($this->viewDir . 'index',[
                 'pizze' => $pizze,
-                'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/pizzeIndex.css">'
+                'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/pizzeindex.css">'
                ]);
             }
     

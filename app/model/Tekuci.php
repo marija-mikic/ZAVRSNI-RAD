@@ -8,7 +8,7 @@ class Tekuci
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
         
-            select * pice where sifra=:parametar;
+            select * from pice where sifra=:parametar;
         
         '); 
         $izraz->execute(['parametar'=>$kljuc]);
@@ -24,7 +24,7 @@ class Tekuci
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
         
-            select * from pice
+            select * from pice;
         
         '); 
         $izraz->execute();

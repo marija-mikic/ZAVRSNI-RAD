@@ -29,4 +29,5 @@
         'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/jeloindex.css">'
        ]);
     }
+    
     }

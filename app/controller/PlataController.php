@@ -12,6 +12,7 @@ class PlataController extends Controller
             {
                 parent::__construct();
                 $this->plata = new stdClass();
+                $this->plata->sifra='';
                 $this->plata->naziv='';
                 $this->plata->slika='';
                 $this->plata->sastav='';

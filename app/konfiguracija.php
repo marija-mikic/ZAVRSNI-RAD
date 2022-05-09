@@ -5,7 +5,7 @@ if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
     $dev=true;
     $baza=[
         'server'=>'localhost',
-        'baza'=>'edunovapp24',
+        'baza'=>'zavrsnirad',
         'korisnik'=>'edunova',
         'lozinka'=>'edunova'
     ];
@@ -15,8 +15,9 @@ if($_SERVER['SERVER_ADDR']==='127.0.0.1'){
     $baza=[
         'server'=>'localhost',
         'baza'=>'zavrsni',
-        'korisnik'=>'marija2',
-        'lozinka'=>'xC5VCU!Kt38Af'
+        'korisnik'=>'marija',
+        'lozinka'=>'xC5VCU&Kt=:3}8Af
+        '
     ];
 }
 

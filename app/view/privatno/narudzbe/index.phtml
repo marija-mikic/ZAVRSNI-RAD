@@ -1,3 +1,4 @@
+
 <table class="dashboard-table">
   <colgroup>
     <col width="150">
@@ -9,99 +10,38 @@
   </colgroup>
   <thead>
     <tr>
-      <th>IME I PREZIME</th>
-      <th> ADRESA </th>
-      <th> BROJ TELEFONA </th>
-      <th> NAZIV</th>
-      <th> CIJENA </th>
-      <th> KOLIČINA </th>
-    </tr>
-  </thead>
-  <tbody>  
-    <tr>
-      <td>
-        <div class="flex-container align-justify align-top">
-          <div class="flex-child-shrink">
-            
+		<th>IME I PREZIME</th>
+		<th> ADRESA </th>
+		<th> NAZIV</th>
+		<th> CIJENA </th>
+		<th> KOLIČINA </th>
+  	</tr>
+  		</thead>
+  		<tbody>
+      <?php foreach($narudzbe as $n): ?>
+    	<tr>
+      		<td>
+       			 <div class="flex-container align-justify align-top">
+         			 <div class="flex-child-shrink">
           </div>
           <div class="flex-child-grow">
-            <h6 class="dashboard-table-text">A Person</h6>
-            <span class="dashboard-table-timestamp">03/04/2017</span>
+            <h6 class="dashboard-table-text"><h3><?=$n->kupac?></h3></h6>
           </div>
         </div>
       </td>
-      <td>Single Line</td>
-      <td class="bold">A Bold Line</td>
-      <td>A Date</td>
+      <td><p><?=$n->adresa?></p></td>
+      <td><h6><?=$n->ukupno?></h6></td>
       <td>
-        <div class="flex-container align-top">
-          <div class="flex-child-shrink">
-            
-          </div>
-          <div class="flex-child">
-            <h6 class="dashboard-table-text">Another person did something</h6>
-            <span class="dashboard-table-timestamp">03/08/2017</span>
-          </div>
-        </div>
-      </td>
-      <td class="listing-inquiry-status">
-      
-        <div class="flex-container align-top">
-          <div class="flex-child-shrink">
-            
-          </div>
-          <div class="flex-child">
-            <h6 class="dashboard-table-text"> A longer wrapping item with an image that is aligned to the top</h6>
-          </div>
-        </div>
-      
-      </td>
-    </tr>		
-	</table>        			 
-
-<div class="container-fluid">
-    <form id="status-update-form">
-        <input type="hidden" name="id" value="<?php echo $_GET['oid'] ?>">
-        <div class="form-group">
-            <label for="" class="control-label">Status narudžbe</label>
-            <select name="status" id="" class="custom-select custol-select-sm">
-                <option value="0" <?php echo $_GET['status'] == 0 ? "selected" : '' ?>>Zaprimljeno</option>
-                <option value="1" <?php echo $_GET['status'] == 1 ? "selected" : '' ?>>U izradi</option>
-                <option value="2" <?php echo $_GET['status'] == 2 ? "selected" : '' ?>>U dostavi</option>
-                <option value="5" <?php echo $_GET['status'] == 3 ? "selected" : '' ?>>Dostavljeno</option>                                       
-                </select>
-        </div>
-		
-    </form>
-	
-</div>
-
-</tbody>
-<script>
-    $(function(){
-        $('#status-update-form').submit(function(e){
-            e.preventDefault();
-            start_loader()
-            $.ajax({
-                url:_base_url_+"classes/Master.php?f=update_order_status",
-                method:"POST",
-                data:$(this).serialize(),
-                dataType:"json",
-                error:err=>{
-                    console.log(err)
-                    alert_toast("An error occured","error")
-                    end_loader()
-                },
-                success:function(resp){
-                    if(!!resp.status && resp.status =='success'){
-                        location.reload()
-                    }else{
-                        console.log(resp)
-                        alert_toast("An error occured","error")
-                        end_loader()
-                    }
-                }
-            })
-        })
-    })
-</script>
+			<div class="flex-container align-top">
+			<div class="flex-child-shrink">
+				
+			</div>
+			<div class="flex-child">
+				<h6 class="dashboard-table-text"><h6><?=$n->kolicina?></h6></h6>
+			</div>
+			</div>
+     	 </td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

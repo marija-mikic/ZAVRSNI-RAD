@@ -9,7 +9,12 @@ class NarudzbaController extends AutorizacijaController
 
     public function index()
     {
-        $this->view->render($this->viewDir . 'index');
+        $narudzbe=Narudzba::read();
+        
+        $this->view->render($this->viewDir . 'index',[
+        'narudzbe' => $narudzbe,
+        'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/pizzeindex.css">'
+        ]);
     }
 
     public function __construct()
@@ -17,15 +22,9 @@ class NarudzbaController extends AutorizacijaController
         parent::__construct();
         $this->narudzba = new stdClass();
         $this->narudzba->sifra='';
-        $this->narudzba->proizvodi='';
         $this->narudzba->adresa='';
         $this->narudzba->datum='';
         $this->narudzba->ukupno='';
         
     }
-
-    
-
-
-    
 }

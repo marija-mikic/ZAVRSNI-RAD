@@ -36,11 +36,15 @@ class Pice
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
         
-            insert into pice (naziv,cijena )
+            insert into pice (naziv,cijena)
             values (:naziv,:cijena);
         
-        '); 
+        ');
         $izraz->execute($parametri);
+        // $izraz->execute([
+        //     'naziv' => $naziv,
+        //     'cijena' => $cijena
+        // ]);
         
     }
 

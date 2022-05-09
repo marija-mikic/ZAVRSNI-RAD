@@ -39,12 +39,11 @@ create table vrsta(
 
 create table narudzba(
     sifra int primary key not null auto_increment,
-    proizvodi varchar(200) not null,
     adresa varchar(100) not null,
     datum datetime,
     ukupno int not null,
-    kupac int,
-    naruceno boolean
+    naruceno boolean,
+    kupac int
 );
 
 create table pice(
@@ -107,10 +106,10 @@ insert into kupac(sifra, ime,prezime,adresa,email,lozinka) values
 (null,'Ana','Jurić','B.Jelacica 30','m@gmail','2'),
 (null,'Bruno','Klaric','Stepinca 10','m@gmail','3');
 
-insert into narudzba (sifra,proizvodi,adresa,datum,ukupno,kupac,naruceno) values
-(null,'pizza','dostava','2021-12-05','100',"thrue",1),
-(null,'pizza','dostava','2021-12-05','100',"false",2),
-(null,'pizza','dostava','2021-12-05','100',"false",2);
+insert into narudzba (sifra,adresa,datum,ukupno,naruceno,kupac) values
+(null,'dostava','2021-12-05','100',true,1),
+(null,'dostava','2021-12-05','100',false,2),
+(null,'dostava','2021-12-05','100',false,2);
 
 
 insert into jelo(sifra,naziv,sastav,slika,cijena,vrsta) values

@@ -45,8 +45,7 @@ class PiceController extends Controller
     public function dodajNovi()
     {
             Pice::create((array)$this->pice);
-             header('location:' . App::config('url').'pice/index');
-        
+            header('location:' . App::config('url').'pice/index');
     }
 
     
