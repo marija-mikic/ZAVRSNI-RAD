@@ -10,8 +10,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>NARUDŽBA</p>
-						<h1>KOŠARICA</h1>
+						<p>KOŠARICA</p>
+						<h1>NARUDZBA</h1>
 					</div>
 				</div>
 			</div>
@@ -37,13 +37,14 @@
 							</thead>
 							<tbody>
 								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-name">Strawberry</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"></td>
-									<td class="product-total">1</td>
+								<?php foreach($kosarica as $proizvod)?>
+									<td class="ukloniizKosarice"> <href="<?=App::config('url')?>kosarica/izbaciizKosarice/<?=$proizvod->sifra?>"<i class="far fa-window-close"></i></td>
+									<td class="product-name">"<?=$proizvod->naziv?>"</td>
+									<td class="product-price">"<?=$proizvod->cijena?>"</td>
+									<td class="product-quantity">"<?=$proizvod->kolicina?>"</td>
+									<td class="product-total"> <?php echo number_format($proizvod->cijena * $proizvod->kolicina) ?></td>
 								</tr>
-								</tbody>
+							</tbody>
 						</table>
 					</div>
 				</div>
@@ -62,16 +63,18 @@
 															
 								<tr class="total-data">
 									<td><strong>UKUPNO: </strong></td>
-									<td>$545</td>
+									<td><?php echo number_format($proizvod->cijena * $proizvod->kolicina) ?></td>
 								</tr>
+								
 							</tbody>
-						</table>
+							 
+						</table> 
 						<div class="cart-buttons">
 						<a  class="alert button expanded" href="<?=App::config('url')?>index" >NADOPUNI KOŠARICU</a>
-							<a href="<?=App::config('url')?>potvrda/index" class="boxed-btn black">POTVRDI NARUDŽBU</a>
+							<a  class="alert button expanded"a href="<?=App::config('url')?>potvrda/index" >POTVRDI NARUDŽBU</a>
 						</div>
 					</div>
-
+					 
 					
 				</div>
 			</div>
