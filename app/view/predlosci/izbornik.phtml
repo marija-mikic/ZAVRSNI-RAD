@@ -1,36 +1,57 @@
 <div class="top-bar" id="example-menu">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text"><?=App::config('naslovApp')?></li>
-      <li><a href="<?=App::config('url')?>">Početna</a></li>
-      
-      
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">
+                <?= App::config('naslovApp') ?>
+            </li>
+            <li>
+                <a href="<?= App::config('url') ?>">
+                    Početna
+                </a>
+            </li>
+            <?php if (App::autoriziran()): ?>
+                <li>
+                    <a href="<?= App::config('url') ?>Nadzornaploca/index">
+                        Nadzorna ploča
+                    </a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </div>
 
-      <?php if(App::autoriziran()):?>
-        <li><a href="<?=App::config('url')?>Nadzornaploca/index">Nadzorna ploča</a></li>
-      <?php endif;?>
-      </ul>
-  </div>
-      
-      <div class="top-bar-right">
-        
     <ul class="menu">
-      
-      <li>
-        <?php if(App::autoriziran()):?>
-          <a href="<?=App::config('url')?>login/odjava">Odjavi <?php echo $_SESSION['autoriziran']->ime ?></a>
-          <li><p>Dobro došla/došao <?php echo $_SESSION['autoriziran']->ime ?></p></li>
-        <?php else:?>
-         <li> <a href="<?=App::config('url')?>registracija/index">Registracija</a></li>
-         <li> <a href="<?=App::config('url')?>login/index">Login</a></li>
-        <?php endif;?>
-      </li>
-      <li><a href="<?=App::config('url')?>kosarica">
-       <i style="color: black;" title="košarica" 
-                class="fas fa-1x fa-shopping-cart"></i></span> Košarica </a></li>
-        <li><a href="<?=App::config('url')?>profil">
-       <i style="color: black;" title="profil" 
-                class="fas fa-id-card"></i></span> Profil </a></li>         
+        <li>
+            <?php if (App::autoriziran()): ?>
+            <a href="<?= App::config('url') ?>login/odjava">
+                Odjavi <?php echo $_SESSION['autoriziran']->ime ?>
+            </a>
+        </li>
+        <?php else: ?>
+            <li>
+                <a href="<?= App::config('url') ?>registracija/index">
+                    Registracija
+                </a>
+            </li>
+            <li>
+                <a href="<?= App::config('url') ?>login/index">
+
+                </a>
+            </li>
+        <?php endif; ?>
+        <li>
+            <a href="<?= App::config('url') ?>kosarica">
+                <i style="color: black;" title="košarica"
+                   class="fas fa-1x fa-shopping-cart">
+                </i>
+                Košarica
+            </a>
+        </li>
+        <li>
+            <a href="<?= App::config('url') ?>profil">
+                <i style="color: black;" title="profil"
+                   class="fas fa-id-card"></i>
+                Profil
+            </a>
+        </li>
     </ul>
-  </div>
 </div>

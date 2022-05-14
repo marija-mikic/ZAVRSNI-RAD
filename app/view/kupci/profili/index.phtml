@@ -8,16 +8,23 @@
     </ul>
 </div>
 
-<div class="grid-x grid-padding-x">
-    <div class="cell large-4">
-   
-        <fieldset>
-            <legend>MOJI PODACI</legend>
-            <label>
-                IME
-                <input type="text" name="naziv" value="<?=$profili->ime?>" />
-                PREZIME
-                <input type="text" name="naziv" value="<?=$profili->prezime?>" />
-                ADRESA
-                <input type="text" name="naziv" value="<?=$profili->adresa?>" />
-            </label>
+<h3 class="text-center">Podaci o korisniku
+    <strong>
+        <?= $profil->ime ?>
+        <?= $profil->prezime ?>
+    </strong>
+</h3>
+<div style="width: 30%; margin: auto">
+    <label>
+        IME
+        <input type="text" name="naziv" value="<?= $profil->ime ?>"/>
+        PREZIME
+        <input type="text" name="naziv" value="<?= $profil->prezime ?>"/>
+        ADRESA
+        <input type="text" name="naziv" value="<?= $profil->adresa ?>"/>
+        TELEFON
+        <input type="text" name="naziv" value="<?= $profil->telefon ?>"/>
+        EMAIL
+        <input type="text" name="naziv" value="<?= $profil->email ?>"/>
+    </label>
+</div>
