@@ -2,10 +2,10 @@
 
 class NadzornaplocaController extends AutorizacijaController
 {
-    private $viewDir = 'privatno' . DIRECTORY_SEPARATOR;
+    private $viewDir = 'admin_panel' . DIRECTORY_SEPARATOR;
 
     public function index()
     {
-        $this->view->render($this->viewDir . 'Nadzornaploca');
+        $this->view->render($this->viewDir . 'index');
     }
 }

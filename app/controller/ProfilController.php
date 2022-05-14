@@ -2,9 +2,7 @@
 
 class ProfilController extends AutorizacijaController
 {
-    private $viewDir = 
-    'kupci' . DIRECTORY_SEPARATOR . 
-        'profili' . DIRECTORY_SEPARATOR;
+    private $viewDir = 'korisnik'.DIRECTORY_SEPARATOR;
 
     public function __construct()
     {
@@ -13,16 +11,14 @@ class ProfilController extends AutorizacijaController
         $this->profil->ime ='';
         $this->profil->prezime ='';
         $this->profil->adresa ='';
-        
     }
 
     public function index()
     {
-        $profili = Kupac::read();
-        
-        $this->view->render($this->viewDir . 'index',[
-        'profili' => $profili,
-        'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/jeloindex.css">'
+        $profil = Korisnik::read($_SESSION['autoriziran']->sifra);
+
+        $this->view->render($this->viewDir . 'profil', [
+            'profil' => $profil
        ]);
     }
 }

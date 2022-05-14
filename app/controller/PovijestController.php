@@ -25,7 +25,7 @@
         $narudzbe = Povijest::read();
         
         $this->view->render($this->viewDir . 'index',[
-        'narudzbe' => $narudzbe,
+        'narudzba' => $narudzbe,
         'css'=>'<link rel="stylesheet" href="' . App::config('url') . 'public/css/jeloindex.css">'
        ]);
     }
