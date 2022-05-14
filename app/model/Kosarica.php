@@ -13,28 +13,28 @@ class Kosarica {
         return $izraz->fetchAll();
     }
 
-	public static function viewNarudzba($id) // provjera dali kupac ima već kreiranu započetu narudzbu   
+	public static function viewNarudzba($id) // provjera dali korisnik ima već kreiranu započetu narudzbu
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
 
-		select sifra, kupac 
+		select sifra 
 		from narudzba 
-		where naruceno = 0;
+		where korisnik = :kupacId;
             
         ');
         $izraz->execute([
             'kupacId' => $id
         ]);
 
-        return $izraz->fetch();
+        return $izraz->rowCount();
     }
 
 	public static function kreiraj($id) // u koliko nema, kreira se nova narudzba
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
-            insert into narudzba (kupac,naruceno) values
+            insert into narudzba (korisnik,naruceno) values
             (:kupacId,false)
             
         ');
@@ -135,7 +135,7 @@ class Kosarica {
             select count(*) as number
             from narudzba a
             inner join narudzba_jelo b on a.id=b.narudzba 
-            where a.naruceno = false  and a.kupac = :kupacId
+            where a.naruceno = false  and a.korisnik = :kupacId
             
         ');
         $izraz->execute([
@@ -154,7 +154,7 @@ class Kosarica {
             select sum(b.cijena*b.kolicina) as number
             from narudzba a
             inner join narudzba_jelo b on a.id=b.narudzba
-            where a.naruceno = false and a.kupac = :kupacId
+            where a.naruceno = false and a.korisnik = :kupacId
             
         ');
         $izraz->execute([
