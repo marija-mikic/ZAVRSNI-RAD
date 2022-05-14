@@ -23,7 +23,7 @@ class Povijest
         
                 select *
                 from narudzba
-                where kupac=:sifrakupca and naruceno=true
+                where korisnik=:sifrakupca and naruceno=true
         
         ');
         $izraz->execute([
