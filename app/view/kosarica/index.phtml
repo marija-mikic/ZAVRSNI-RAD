@@ -1,0 +1,105 @@
+<div class="content">
+    <div class="container-fluid">
+
+        <div class='row'>
+            <?php
+            if (!empty("kosarica")) {
+                ?>
+                <div class="breadcrumb-section breadcrumb-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 text-center">
+                                <div class="breadcrumb-text">
+                                    <h3>KOŠARICA</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end breadcrumb section -->
+
+                <!-- cart -->
+                <div class="cart-section mt-150 mb-150">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12">
+                                <div class="cart-table-wrap">
+                                    <table class="cart-table">
+                                        <thead class="cart-table-head">
+                                        <tr class="table-head-row">
+                                            <th class="product-remove"></th>
+                                            <th class="product-name">NAZIV</th>
+                                            <th class="product-price">CIJENA</th>
+                                            <th class="product-quantity">KOLIČINA</th>
+                                            <th class="product-total">UKUPNO</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="table-body-row">
+                                            <?php foreach ($kosarica
+
+                                            as $proizvod) ?>
+                                            <td class="ukloniizKosarice">
+                                                <href
+                                                ="<?= App::config('url') ?>
+                                                kosarica/izbaciizKosarice/<?= $proizvod->sifra ?>"<i
+                                                        class="far fa-window-close"></i></td>
+                                            <td class="product-name">"<?= $proizvod->naziv ?>"</td>
+                                            <td class="product-price">"<?= $proizvod->cijena ?>"</td>
+                                            <td class="product-quantity">"<?= $proizvod->kolicina ?>"</td>
+                                            <td class="product-total"> <?php echo number_format($proizvod->cijena * $proizvod->kolicina) ?></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4">
+                                <div class="total-section">
+                                    <table class="total-table">
+                                        <thead class="total-table-head">
+                                        <tr class="table-total-row">
+                                            <th>UKUPNO</th>
+                                            <th>CIJENA</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr class="total-data">
+                                            <td><strong>UKUPNO: </strong></td>
+                                            <td><?php echo number_format($proizvod->cijena * $proizvod->kolicina) ?></td>
+                                        </tr>
+
+                                        </tbody>
+
+                                    </table>
+                                    <div class="cart-buttons">
+                                        <a class="alert button expanded" href="<?= App::config('url') ?>index">NADOPUNI
+                                            KOŠARICU</a>
+                                        <a class="alert button expanded" a
+                                           href="<?= App::config('url') ?>potvrda/index">POTVRDI NARUDŽBU</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+            } elseif (empty("kosarica")) {
+                ?>
+                <div class="container">
+                    <div class="jumbotron">
+                        <h3>Kad si gladan ,nisi svoj!</h3>
+                        <h3>Požuri , <a href="<?= App::config('url') ?>index">POGLEDAJ</a> i naruči .</h3>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>

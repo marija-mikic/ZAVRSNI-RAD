@@ -1,0 +1,45 @@
+<div class="grid-x">
+    <div class="cell large-6">
+        <h1 style="font-size: 1.5rem;">Lista proizvoda</h1>
+    </div>
+    
+    <div class="cell large-6" style="text-align: right;">
+        <a href="<?=App::config('url')?>proizvod/novi">
+            <i style="color: green;" title="Dodaj novi" 
+                class="fas fa-2x fa-plus-circle"></i>
+        </a>
+    </div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Sastav</th>
+            <th>Cijena</th>
+            <th>Vrsta</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach($proizvodi as $proizvod): ?>
+            <tr>
+                <td><?=$proizvod->naziv?></td>
+                <td><?=$proizvod->sastav?></td>
+                <td><?=$proizvod->cijena?></td>
+                 <td>
+                     <a href="<?= App::config('url') ?>jelo/promjena/<?= $proizvod->sifra ?>">
+                         <i title="Promjeni &quot;<?= $proizvod->naziv ?>&quot;"
+                            class="fas fa-2x fa-edit"></i>
+                     </a>
+                     <a onclick="return confirm('Sigurno obrisati <?=$proizvod->naziv?>?');" style="margin-left: 20px;" href="<?=App::config('url')?>jelo/brisanje/<?=$jelo->sifra?>">
+                            <i style="color: red" title="Obriši <?=$proizvod->naziv?>"
+                            class="fas fa-2x fa-trash"></i>
+                        </a>  
+                
+                    </td>  
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+

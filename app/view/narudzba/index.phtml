@@ -1,0 +1,55 @@
+<h1 style="font-size: 1.5rem;">Lista narudžbi</h1>
+<table class="dashboard-table">
+    <thead>
+    <tr>
+        <th>IME I PREZIME</th>
+        <th>ADRESA</th>
+        <th>NAZIV PROIZVODA</th>
+        <th>CIJENA</th>
+        <th>KOLIČINA</th>
+        <th>DATUM</th>
+        <th>STATUS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($narudzbe as $narudzba): ?>
+        <tr>
+            <td>
+                <p class="dashboard-table-text">
+                    <?= $narudzba->kupac ?>
+                </p>
+            </td>
+            <td>
+                <p>
+                    <?= $narudzba->adresa ?>
+                </p>
+            </td>
+            <td>
+                <p>
+                    naziv proizvoda
+                </p>
+            </td>
+            <td>
+                <p class="dashboard-table-text">
+                    cijena
+                </p>
+            </td>
+            <td>
+                <p class="dashboard-table-text">
+                    kolicina
+                </p>
+            </td>
+            <td>
+                <p class="dashboard-table-text">
+                    datum
+                </p>
+            </td>
+            <td>
+                <p class="dashboard-table-text">
+                    status
+                </p>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

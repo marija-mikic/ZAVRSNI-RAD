@@ -1,34 +1,34 @@
 <div class="login-box">
-<form action="<?= App::config('url') ?>registracija/noviKupac" method="POST">
+<form action="<?= App::config('url') ?>registracija/novikorisnik" method="POST">
   <div class="row collapse expanded">
     <div class="small-12 medium-6 column small-order-2 medium-order-1">
       <div class="login-box-form-section">
         <h1 class="login-box-title">Registracija</h1>        
-        <input class="login-box-input" input type="text" name="ime" id="ime" aria-describedby="porukaIme" value="<?= $kupac->ime ?>"placeholder="Ime" />
+        <input class="login-box-input" input type="text" name="ime" id="ime" aria-describedby="porukaIme" value="<?= $korisnik->ime ?>"placeholder="Ime" />
         <p class="help-text red-message" id="porukaIme">
                     <?= $poruka->ime ?>
                 </p>
-        <input class="login-box-input" input type="text" name="prezime" id="prezime" aria-describedby="porukaPrezime" value="<?= $kupac->prezime ?>"placeholder="Prezime" />
+        <input class="login-box-input" input type="text" name="prezime" id="prezime" aria-describedby="porukaPrezime" value="<?= $korisnik->prezime ?>"placeholder="Prezime" />
         <p class="help-text red-message" id="porukaPrezime">
                     <?= $poruka->prezime ?>
                 </p>
-        <input class="login-box-input" input type="text" name="adresa" id="adresa" aria-describedby="porukaAdresa" value="<?= $kupac->adresa ?>"placeholder="Adresa" />
+        <input class="login-box-input" input type="text" name="adresa" id="adresa" aria-describedby="porukaAdresa" value="<?= $korisnik->adresa ?>"placeholder="Adresa" />
         <p class="help-text red-message" id="porukaAdresa">
                     <?= $poruka->adresa ?>
                 </p>
-        <input class="login-box-input" input type="number" name="telefon" id="telefon" aria-describedby="porukaTelefon" value="<?= $kupac->telefon ?>"placeholder="Telefon" />
+        <input class="login-box-input" input type="number" name="telefon" id="telefon" aria-describedby="porukaTelefon" value="<?= $korisnik->telefon ?>"placeholder="Telefon" />
         <p class="help-text red-message" id="porukaTelefon">
                     <?= $poruka->telefon ?>
                 </p>
-        <input class="login-box-input" input type="email" name="email"id="E-mail" aria-describedby="porukaEmail" value="<?= $kupac->email ?>"placeholder="E-mail" />
+        <input class="login-box-input" input type="email" name="email"id="E-mail" aria-describedby="porukaEmail" value="<?= $korisnik->email ?>"placeholder="E-mail" />
         <p class="help-text red-message" id="porukaEmail">
                     <?= $poruka->email ?>
                 </p>
-        <input class="login-box-input" input type="password" name="lozinka"id="lozinka" aria-describedby="porukaLozinka" value="<?= $kupac->lozinka ?>"placeholder="Lozinka" />
+        <input class="login-box-input" input type="password" name="lozinka"id="lozinka" aria-describedby="porukaLozinka" value="<?= $korisnik->lozinka ?>"placeholder="Lozinka" />
         <p class="help-text red-message" id="porukaLozinka">
                     <?= $poruka->lozinka ?>
                 </p>
-        <input class="login-box-input" input type="password" name="potvrdi_lozinku"id="potvrdi_lozinku" aria-describedby="porukaPotvrdi_lozinku" value="<?= $kupac->potvrdi_lozinku ?>"placeholder="Potvrdi password" />
+        <input class="login-box-input" input type="password" name="potvrdi_lozinku"id="potvrdi_lozinku" aria-describedby="porukaPotvrdi_lozinku" value="<?= $korisnik->potvrdi_lozinku ?>"placeholder="Potvrdi password" />
         <p class="help-text red-message" id="porukaPotvrdi_lozinku">
                     <?= $poruka->potvrdi_lozinku ?>
                 </p>

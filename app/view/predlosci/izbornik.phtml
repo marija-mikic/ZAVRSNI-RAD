@@ -1,14 +1,11 @@
 <div class="top-bar" id="example-menu">
     <div class="top-bar-left">
         <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">
-                <?= App::config('naslovApp') ?>
-            </li>
-            <li>
-                <a href="<?= App::config('url') ?>">
-                    Početna
-                </a>
-            </li>
+            <a href="<?= App::config('url') ?>">
+                <strong>
+                    <?= App::config('naslovApp') ?>
+                </strong>
+            </a>
             <?php if (App::autoriziran()): ?>
                 <li>
                     <a href="<?= App::config('url') ?>Nadzornaploca/index">
@@ -26,18 +23,6 @@
                 Odjavi <?php echo $_SESSION['autoriziran']->ime ?>
             </a>
         </li>
-        <?php else: ?>
-            <li>
-                <a href="<?= App::config('url') ?>registracija/index">
-                    Registracija
-                </a>
-            </li>
-            <li>
-                <a href="<?= App::config('url') ?>login/index">
-
-                </a>
-            </li>
-        <?php endif; ?>
         <li>
             <a href="<?= App::config('url') ?>kosarica">
                 <i style="color: black;" title="košarica"
@@ -53,5 +38,17 @@
                 Profil
             </a>
         </li>
+        <?php else: ?>
+            <li>
+                <a href="<?= App::config('url') ?>registracija/index">
+                    Registracija
+                </a>
+            </li>
+            <li>
+                <a href="<?= App::config('url') ?>login/index">
+                    Prijava
+                </a>
+            </li>
+        <?php endif; ?>
     </ul>
 </div>
