@@ -1,0 +1,32 @@
+<body>
+    <?php if (count($pica) === 0): ?>
+        <p>
+            <strong>
+                Ne postoji niti jedan unos pica u sustavu. Posjetite nas kasnije.
+            </strong>
+        </p>
+    <?php else: ?>
+        <div class="grid-x grid-padding-x" style="text-align: center">
+            <div class="gallery">
+                <div class="content">
+                    <?php foreach ($pica as $pice): ?>
+                        <img src="<?= App::config('url') ?>public/img/<?= $pice->slika ?>" alt="prozivo">
+                        <p><?= $pice->naziv ?></p>
+                        <p><?= $pice->sastav ?></p>
+                        <p><?= $pice->cijena ?></p>
+                        <form action="<?= App::config('url') ?>Kosarica/dodaj/<?= $pice->id ?>" method="post">
+                            <h5 class="text-info">Količina:
+                                <label>
+                                    <input type="number" min="1" max="25" name="kolicina"
+                                           class="form-control" value="1" style="width: 60px;">
+                                </label>
+                            </h5>
+                            <input type="submit" name="add" style="margin-top:5px;" class="btn btn-success"
+                                   value="Add to Cart">
+                        </form>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</body>
