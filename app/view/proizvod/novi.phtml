@@ -1,16 +1,41 @@
-<form action="<?= App::config('url') ?>proizvod/dodajNovi" method="post">
 
-    <fieldset>
-        <legend>Dodavanje novog proizvoda</legend>
+<style>
+    form {
+        width: 50%;
+        margin: auto;
+    }
+
+</style>
+
+<form action="<?= App::config('url') ?>proizvod/dodajNovi" method="post" enctype="multipart/form-data">
+        <legend>
+            <h4>
+                <strong>
+                    Dodavanje novog proizvoda
+                </strong>
+            </h4>
+        </legend>
 
         <label for="naziv">Naziv</label>
-        <input type="text" name="naziv" value="<?= $proizvod->naziv ?>"/>
+        <input type="text" name="naziv" value="<?= $proizvod->naziv ?>" required/>
 
         <label for="sastav">Sastav</label>
-        <input type="text" name="sastav" value="<?= $proizvod->sastav ?>"/>
+        <input type="text" name="sastav" value="<?= $proizvod->sastav ?>" required/>
 
         <label for="cijena">Cijena</label>
-        <input type="text" name="cijena" id="cijena" value="<?= $proizvod->cijena ?>">
+        <input type="text" name="cijena" id="cijena" value="<?= $proizvod->cijena ?>" required/>
+
+        <label for="vrste">Vrsta</label>
+        <select name="vrste" id="vrste" required>
+            <?php foreach ($vrste as $vrsta): ?>
+                <option value="<?= $vrsta ?>>">
+                    <?= $vrsta ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <label for="slika">Slika</label>
+        <input name="slika" id="slika" type="file" required />
 
         <div class="grid-x grid-padding-x">
             <div class="large-4 cell">
