@@ -1,54 +1,41 @@
-<div class="top-bar" id="example-menu">
-    <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <a href="<?= App::config('url') ?>">
-                <strong>
-                    <?= App::config('naslovApp') ?>
-                </strong>
-            </a>
-            <?php if (App::autoriziran()): ?>
-                <li>
-                    <a href="<?= App::config('url') ?>Nadzornaploca/index">
-                        Nadzorna ploča
-                    </a>
-                </li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarToggler"
+                aria-controls="navbarToggler"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/"> Pizzeria </a>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <?php use Core\App;
+            if (App::isAuthorized()): ?>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard"> Dashboard </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/profile"> Profile </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout"> Logout </a>
+                    </li>
+                </ul>
+            <?php else: ?>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login"> Login </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register"> Register </a>
+                    </li>
+                </ul>
             <?php endif; ?>
-        </ul>
+        </div>
     </div>
+</nav>
 
-    <ul class="menu">
-        <li>
-            <?php if (App::autoriziran()): ?>
-            <a href="<?= App::config('url') ?>login/odjava">
-                Odjavi <?php echo $_SESSION['autoriziran']->ime ?>
-            </a>
-        </li>
-        <li>
-            <a href="<?= App::config('url') ?>kosarica">
-                <i style="color: black;" title="košarica"
-                   class="fas fa-1x fa-shopping-cart">
-                </i>
-                Košarica
-            </a>
-        </li>
-        <li>
-            <a href="<?= App::config('url') ?>profil">
-                <i style="color: black;" title="profil"
-                   class="fas fa-id-card"></i>
-                Profil
-            </a>
-        </li>
-        <?php else: ?>
-            <li>
-                <a href="<?= App::config('url') ?>registracija/index">
-                    Registracija
-                </a>
-            </li>
-            <li>
-                <a href="<?= App::config('url') ?>login/index">
-                    Prijava
-                </a>
-            </li>
-        <?php endif; ?>
-    </ul>
-</div>
+
