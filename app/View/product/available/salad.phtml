@@ -1,0 +1,24 @@
+<?php if (count($salad) === 0): ?>
+    <h6 class="text-center mt-3 text-danger">
+        There are no pizza entries in database. Check back later!
+    </h6>
+<?php else: ?>
+    <div class="row text-center mt-2">
+        <?php foreach ($salad as $item): ?>
+            <div class="col-sm-3 mt-2">
+                <img src="https://via.placeholder.com/300"
+                     alt="image_<?= $item->name ?>">
+                <h5 class="mt-2">
+                    <?= $item->name ?>
+                </h5>
+                <p class="card-text">
+                    <?= $item->description ?>
+                </p>
+                <a href="#" class="btn btn-warning">
+                    Add to cart
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
