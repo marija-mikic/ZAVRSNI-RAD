@@ -3,76 +3,108 @@
 namespace Storage;
 
 use Core\Database;
+use Model\Product;
+use PDO;
 
 class ProductStorage
 {
     public static function findAll()
     {
         $db = Database::getInstance();
-
         $statement = $db->prepare('
 
             SELECT * FROM product
+            ORDER BY id DESC
 
         ');
         $statement->execute();
-        return $statement->fetchAll();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-//
-//
-//    public static function findOneById($id)
-//    {
-//        $db = Database::getInstanca();
-//        $statement = $db->prepare('
-//
-//            SELECT * FROM product WHERE id = :id;
-//
-//        ');
-//
-//        $statement->execute(
-//            ['id' => $id]
-//        );
-//        return $statement->fetchObject();
-//    }
 
-//    public static function create($parametri)
-//    {
-//        $veza = Database::getInstanca();
-//        $izraz = $veza->prepare('
-//
-//            insert into product (naziv, sastav, cijena)
-//            values (:naziv,:sastav,:cijena);
-//
-//        ');
-//        $izraz->execute($parametri);
-//
-//    }
-//
-//    public static function update($parametri)
-//    {
-//        $veza = Database::getInstanca();
-//        $izraz = $veza->prepare('
-//
-//            update jelo set
-//                naziv=:naziv,
-//                sastav=:sastav,
-//                cijena=:cijena,
-//                where sifra=:sifra;
-//
-//        ');
-//        $izraz->execute($parametri);
-//
-//    }
-//
-//    public static function delete($sifra)
-//    {
-//        $veza = Database::getInstanca();
-//        $izraz = $veza->prepare('
-//
-//            delete from jelo where sifra=:sifra;
-//
-//        ');
-//        $izraz->execute(['sifra' => $sifra]);
-//
-//    }
+    public static function insert(Product $product)
+    {
+        $db = Database::getInstance();
+        $statement = $db->prepare('
+
+            INSERT INTO product (name, description, price, type)
+            VALUES (:name, :description, :price, :type);
+
+        ');
+
+        $statement->execute([
+            'name' => $product->getName(),
+            'description' => $product->getDescription(),
+            'price' => $product->getPrice(),
+            'type' => $product->getType()->getId()
+        ]);
+    }
+
+    public static function findOneByProductTypeName($type_id)
+    {
+        $db = Database::getInstance();
+        $statement = $db->prepare('
+
+            SELECT * FROM product
+            WHERE type=:id
+
+        ');
+        $statement->execute([
+            'id' => $type_id
+        ]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function findOneById($id)
+    {
+        $db = Database::getInstance();
+        $statement = $db->prepare('
+
+            SELECT * FROM product
+            WHERE id=:id
+
+        ');
+        $statement->execute([
+            'id' => $id
+        ]);
+        return $statement->fetch(PDO::FETCH_OBJ);
+    }
+
+
+    public static function update(Product $product)
+    {
+        $db = Database::getInstance();
+        $statement = $db->prepare('
+
+            UPDATE product SET
+                name=:name,
+                description=:description,
+                price=:price,
+                type=:type
+            WHERE id=:id;
+
+        ');
+
+        $statement->execute([
+            'name' => $product->getName(),
+            'description' => $product->getDescription(),
+            'price' => $product->getPrice(),
+            'type' => $product->getType()->getId(),
+            'id' => $product->getId()
+        ]);
+    }
+
+    public static function delete($id)
+    {
+        $db = Database::getInstance();
+        $statement = $db->prepare('
+
+            DELETE FROM product 
+            WHERE id=:id;
+
+        ');
+
+        $statement->execute([
+            'id' => $id
+        ]);
+    }
 }
