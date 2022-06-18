@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use Model\Product;
+use Model\ProductType;
 use storage\ProductStorage;
 use Storage\ProductTypeStorage;
 
@@ -20,42 +22,12 @@ class ProductController extends BaseController
         ]);
     }
 
-    public function pizza()
+    public function availableProducts()
     {
-        $pizza = ProductStorage::findAll();
+        $products = ProductStorage::findOneByProductTypeName($_GET['id']);
         echo $this->view->render('base', [
-            'content' => $this->view->render($this->viewDir . '/available/pizza', [
-                'pizza' => $pizza
-            ])
-        ]);
-    }
-
-    public function barbecue()
-    {
-        $barbecue = ProductStorage::findAll();
-        echo $this->view->render('base', [
-            'content' => $this->view->render($this->viewDir . '/available/barbecue', [
-                'barbecue' => $barbecue
-            ])
-        ]);
-    }
-
-    public function drink()
-    {
-        $drink = ProductStorage::findAll();
-        echo $this->view->render('base', [
-            'content' => $this->view->render($this->viewDir . '/available/drink', [
-                'drink' => $drink
-            ])
-        ]);
-    }
-
-    public function salad()
-    {
-        $salad = ProductStorage::findAll();
-        echo $this->view->render('base', [
-            'content' => $this->view->render($this->viewDir . '/available/salad', [
-                'salad' => $salad
+            'content' => $this->view->render($this->viewDir . '/available_products', [
+                'products' => $products
             ])
         ]);
     }
@@ -65,7 +37,7 @@ class ProductController extends BaseController
         $productTypes = ProductTypeStorage::findAll();
         echo $this->view->render('base', [
             'content' => $this->view->render($this->viewDir . 'create', [
-                '$productTypes' => $productTypes
+                'productTypes' => $productTypes
             ])
         ]);
     }
@@ -73,9 +45,64 @@ class ProductController extends BaseController
     public function createSubmit()
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['submit_register'])) {
+            if (isset($_POST['submit_product'])) {
 
+                $productType = ProductTypeStorage::findOneByName($_POST['product_type']);
+
+                $productTypeObject = new ProductType();
+                $productTypeObject->setId($productType->id);
+                $productTypeObject->setName($productType->name);
+
+                $product = new Product();
+                $product->setName($_POST['name']);
+                $product->setDescription($_POST['description']);
+                $product->setPrice($_POST['price']);
+                $product->setType($productTypeObject);
+
+                ProductStorage::insert($product);
+                header('Location: /product/');
             }
         }
+    }
+
+    public function edit()
+    {
+        $product = ProductStorage::findOneById($_GET['id']);
+        $productTypes = ProductTypeStorage::findAll();
+        echo $this->view->render('base', [
+            'content' => $this->view->render($this->viewDir . '/edit', [
+                'product' => $product,
+                'productTypes' => $productTypes
+            ])
+        ]);
+    }
+
+    public function editSubmit()
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['submit_edit_product'])) {
+                $productType = ProductTypeStorage::findOneByName($_POST['product_type']);
+
+                $productTypeObject = new ProductType();
+                $productTypeObject->setId($productType->id);
+                $productTypeObject->setName($productType->name);
+
+                $product = new Product();
+                $product->setId($_POST['id']);
+                $product->setName($_POST['name']);
+                $product->setDescription($_POST['description']);
+                $product->setPrice($_POST['price']);
+                $product->setType($productTypeObject);
+
+                ProductStorage::update($product);
+                header('Location: /product/');
+            }
+        }
+    }
+
+    public function delete()
+    {
+        ProductStorage::delete($_GET['id']);
+        header('Location: /product/');
     }
 }   
