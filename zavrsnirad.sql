@@ -1,14 +1,37 @@
-drop database if exists zavrsnirad;
-create database zavrsnirad;
-use zavrsnirad;     
-# C:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < D:\EdunovaPP24\zavrsnirad.sql
-alter database zavrsnirad character set utf8mb4;
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 14, 2022 at 09:10 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
-CREATE TABLE `order` (
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `zavrsnirad`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `ordered` tinyint(1) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `ordered` tinyint(1) NOT NULL DEFAULT 0,
   `user` int(11) NOT NULL,
   `status` int(11) DEFAULT NULL,
   `total_price` float DEFAULT NULL
@@ -17,12 +40,12 @@ CREATE TABLE `order` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_product`
+-- Table structure for table `orders_product`
 --
 
-CREATE TABLE `order_product` (
+CREATE TABLE `orders_product` (
   `id` int(11) NOT NULL,
-  `order` int(11) NOT NULL,
+  `orders` int(11) NOT NULL,
   `product` int(11) NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -30,19 +53,19 @@ CREATE TABLE `order_product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_status`
+-- Table structure for table `orders_status`
 --
 
-CREATE TABLE `order_status` (
+CREATE TABLE `orders_status` (
   `id` int(11) NOT NULL,
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_status`
+-- Dumping data for table `orders_status`
 --
 
-INSERT INTO `order_status` (`id`, `status`) VALUES
+INSERT INTO `orders_status` (`id`, `status`) VALUES
 (1, 'Received'),
 (2, 'Preparation'),
 (3, 'Delivered');
@@ -67,10 +90,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `image_path`, `name`, `description`, `price`, `type`) VALUES
-(4, NULL, 'Cola', 'Sugar free', 15, 3),
-(5, NULL, 'Capricoza', 'Sir, salama', 25, 1),
 (6, NULL, 'Plata', 'Kobasice, rostilj', 350, 2),
-(7, NULL, 'Šopska', 'Feta sir', 35, 4);
+(7, NULL, 'Šopska', 'Feta sir', 36, 4);
 
 -- --------------------------------------------------------
 
@@ -111,38 +132,29 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `name`, `surname`, `address`, `telephone`, `email`, `password`, `role`) VALUES
-(11, 'Branimir', 'Tester', 'adfd22', '212345', 'test@example.com', '$2y$10$qdCRn6Y7lb/I.80LGtaqTOFCWD3673b4FlivcjI8K2z6DJ0W.NuCe', 'admin'),
-(14, 'Ante', 'Antić', 'sdnadn', '2323', 'ante@eamil.com', '$2y$10$D7jodSAyZ4DD4jDdxbqfo.D.qrbu1KL6SQFHsCVH69lrzl.ODy2Wm', 'customer'),
-(15, 'test', 'test', 'testsetse', '1212313', 'test@test.co', '$2y$10$JpBXMgmvCzLwLZ1K7GQ55e8Vye4RBtHKWYLbgLqT93pEP9UPjejku', 'customer');
-
---
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `order`
+-- Indexes for table `orders`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `korisnik` (`user`),
+  ADD KEY `user` (`user`),
   ADD KEY `status` (`status`);
 
 --
--- Indexes for table `order_product`
+-- Indexes for table `orders_product`
 --
-ALTER TABLE `order_product`
+ALTER TABLE `orders_product`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `narudzba` (`order`),
-  ADD KEY `proizvod` (`product`);
+  ADD KEY `orders` (`orders`),
+  ADD KEY `product` (`product`);
 
 --
--- Indexes for table `order_status`
+-- Indexes for table `orders_status`
 --
-ALTER TABLE `order_status`
+ALTER TABLE `orders_status`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -169,21 +181,21 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `order_product`
+-- AUTO_INCREMENT for table `orders_product`
 --
-ALTER TABLE `order_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orders_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `order_status`
+-- AUTO_INCREMENT for table `orders_status`
 --
-ALTER TABLE `order_status`
+ALTER TABLE `orders_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -202,25 +214,25 @@ ALTER TABLE `product_type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `order`
+-- Constraints for table `orders`
 --
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`status`) REFERENCES `order_status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`status`) REFERENCES `orders_status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `order_product`
+-- Constraints for table `orders_product`
 --
-ALTER TABLE `order_product`
-  ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`order`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `orders_product`
+  ADD CONSTRAINT `orders_product_ibfk_1` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_product_ibfk_2` FOREIGN KEY (`orders`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `product`
@@ -228,3 +240,7 @@ ALTER TABLE `order_product`
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`type`) REFERENCES `product_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
