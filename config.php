@@ -13,7 +13,7 @@ if ($_SERVER['SERVER_ADDR'] === '127.0.0.1') {
     $url = 'https://mamik-dj.shop/';
     $dev = false;
     $database = [
-        'server' => 'localhost',
+        'server' => 'mamik-dj.shop',
         'database' => 'zavrsni',
         'user' => 'marija',
         'password' => 'xC5VCU&Kt=:3}8Af
