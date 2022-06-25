@@ -1,22 +1,20 @@
 <h3 class="text-center mt-2">
     <span class="bg-light p-2">
-        Order list
+        User order history list
     </span>
 </h3>
 
 <div class="text-center">
     <?php if(count($orders) === 0): ?>
-        <h6 class="text-danger">
-            There are no items in order list.
-        </h6>
+            <h6 class="text-danger">
+                There are no items in history list. Order something and get back here!
+            </h6>
     <?php else: ?>
         <table class="table">
             <thead>
             <tr>
                 <th> Id </th>
                 <th> Product </th>
-                <th> Name </th>
-                <th> Surname </th>
                 <th> Address </th>
                 <th> Price </th>
                 <th> Status </th>
@@ -28,20 +26,18 @@
                 <tr>
                     <td> <?= $order->order_product_id ?>  </td>
                     <td> <?= $order->product_name ?> </td>
-                    <td> <?= $order->order_user_name ?> </td>
-                    <td> <?= $order->order_user_surname ?> </td>
                     <td> <?= $order->order_address ?> </td>
-                    <td> <?= $order->order_total_price ?> </td>
+                    <td> <?= $totalPrice ?> </td>
                     <td
-                        <?php if($order->order_status === 'Received'): ?>
+                        <?php if($status->order_status === 'Received'): ?>
                             style="color: red;"
-                        <?php elseif($order->order_status === 'Preparation'): ?>
+                        <?php elseif($status->order_status === 'Preparation'): ?>
                             style="color: cornflowerblue;"
                         <?php else: ?>
                             style="color: greenyellow;"
                         <?php endif; ?>>
                         <strong>
-                            <?= $order->order_status ?>
+                            <?= $status->order_status ?>
                         </strong>
                     </td>
                     <td> <?= $order->order_date ?> </td>

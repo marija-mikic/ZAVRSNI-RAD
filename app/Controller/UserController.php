@@ -3,15 +3,18 @@
 namespace Controller;
 
 use Model\User;
+use Storage\OrderStorage;
 use Storage\UserStorage;
 
 class UserController extends BaseController
 {
+    private $viewDir = 'user' . DIRECTORY_SEPARATOR;
+
     public function index()
     {
         $user = UserStorage::findOneByEmail($_SESSION['user']->email);
         echo $this->view->render('base', [
-            'content' => $this->view->render('user/profile', [
+            'content' => $this->view->render($this->viewDir . 'profile', [
                 'user' => $user
             ])
         ]);
@@ -25,7 +28,7 @@ class UserController extends BaseController
         }
 
         echo $this->view->render('base', [
-            'content' => $this->view->render('user/login')
+            'content' => $this->view->render($this->viewDir . 'login')
         ]);
     }
 
@@ -77,5 +80,25 @@ class UserController extends BaseController
         session_unset();
         session_destroy();
         header('Location: /');
+    }
+
+    public function history()
+    {
+        $orders = OrderStorage::findAllFromLoggedInUser(true);
+
+        $totalPrice = $status = null;
+        foreach($orders as $order) {
+            $totalPrice = OrderStorage::getTotalPriceOfOrder($order->order_id);
+            $status = OrderStorage::findStatusByOrderId($order->order_id);
+            break;
+        }
+
+        echo $this->view->render('base', [
+            'content' => $this->view->render($this->viewDir . 'history', [
+                'orders' => $orders,
+                'totalPrice' => $totalPrice,
+                'status' => $status
+            ])
+        ]);
     }
 }

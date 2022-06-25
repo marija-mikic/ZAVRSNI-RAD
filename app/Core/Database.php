@@ -13,6 +13,7 @@ class Database extends PDO
         $dsn = 'mysql:host=' . $db['server'] . ';dbname=' . $db['database'] . ';charset=utf8mb4';
         parent::__construct($dsn, $db['user'], $db['password']);
         $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+        $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public static function getInstance()
@@ -22,5 +23,4 @@ class Database extends PDO
         }
         return self::$instance;
     }
-
 }

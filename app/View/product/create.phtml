@@ -8,26 +8,29 @@
     <form action="/product/createSubmit" method="POST">
         <div class="mb-3">
             <label for="name" class="form-label"> Name </label>
-            <input type="text" class="form-control" id="name" required>
+            <input type="text" name="name" class="form-control" id="name" required>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label"> Description </label>
-            <input type="text" class="form-control" id="description" required>
+            <input type="text" name="description" class="form-control" id="description" required>
         </div>
 
         <div class="mb-3">
             <label for="price" class="form-label"> Price [kn] </label>
-            <input type="number" class="form-control" id="price" min="1" required>
+            <input type="number" name="price" class="form-control" id="price" min="1" required>
         </div>
 
-        <select class="form-select" required>
-            <?php foreach ($productTypes as $productType): ?>
-                <option value="<?= $productType['name'] ?>>">
-                    <?= $productType['name'] ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <div class="mb-3">
+            <label for="product_type" class="form-label"> Product type </label>
+            <select id="product_type" name="product_type" class="form-select" required>
+                <?php foreach ($productTypes as $productType): ?>
+                    <option value="<?= $productType['name'] ?>">
+                        <?= $productType['name'] ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
         <div class="text-center mt-3">
             <button type="submit" name="submit_product" class="btn btn-success">

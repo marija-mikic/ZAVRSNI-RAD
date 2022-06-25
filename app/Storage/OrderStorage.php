@@ -58,8 +58,7 @@ class OrderStorage
         $db = Database::getInstance();
         $statement = $db->prepare('
 
-		SELECT * FROM orders 
-		         WHERE ordered=false AND user=:userId;
+		SELECT * FROM orders WHERE ordered=false AND user=:userId;
 
         ');
         $statement->execute([

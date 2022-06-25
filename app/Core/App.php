@@ -14,7 +14,7 @@ class App
         if (!isset($routeParts[1]) || $routeParts[1] === '') {
             $class = 'Home';
         } else {
-            $class = ucfirst($routeParts[1]);//prvi znak vraća velikim slovom
+            $class = ucfirst($routeParts[1]);
         }
         $class .= 'Controller';
 

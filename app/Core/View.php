@@ -11,12 +11,12 @@ class View
         $fileName = BP_APP . 'View' . DIRECTORY_SEPARATOR . $phtmlPage . '.phtml';
         if(!file_exists($fileName))
         {
-            return new Exception('Template not found');//konstruira iznimku
+            return new Exception('Template not found');
         }
         ob_start();
         extract($parameters, EXTR_SKIP);
         include $fileName;
-        $content = ob_get_clean();  // dohvaća trenutni sadržaj i briše međuspremnik
+        $content = ob_get_clean();
         return $content;
     }
 }

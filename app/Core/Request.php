@@ -8,7 +8,7 @@ class Request
     {
         $route = '/';
 
-        if (isset($_SERVER['REDIRECT_PATH_INFO'])) {   //sadržaj puta -rute u url
+        if (isset($_SERVER['REDIRECT_PATH_INFO'])) {
             $route = $_SERVER['REDIRECT_PATH_INFO'];
 
         } else if (isset($_SERVER['REQUEST_URI'])) {
